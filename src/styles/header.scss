@@ -1,0 +1,135 @@
+@import "./variables.scss";
+
+.header {
+  background: $color-light;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md;
+
+  box-shadow: 0 2px 20px rgb(199, 198, 198);
+  @include breakpoint(md) {
+    position: relative;
+  }
+}
+
+.logo {
+  color: $color-primary;
+  font-size: 20px;
+  align-items: center;
+  display: flex;
+  font-weight: 700;
+}
+
+.menu {
+  display: none;
+  z-index: 1000;
+  width: 35px;
+  position: relative;
+  &__line {
+    width: 35px;
+    height: 4px;
+    background-color: #7a787e;
+    border-radius: 13px;
+    transition: all 0.3s;
+
+    &:not(:last-child) {
+      margin-bottom: 6px;
+    }
+  }
+  @include breakpoint(md) {
+    display: block;
+  }
+}
+
+.menu--open {
+  display: block;
+  .menu__line {
+    position: absolute;
+    &:not(:last-child) {
+      margin-bottom: 0px;
+    }
+    &:nth-child(1) {
+      transform: rotate(45deg);
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+  }
+  display: block;
+  position: relative;
+}
+
+.nav {
+  font-size: 16px;
+  font-weight: 500;
+
+  &__items {
+    @include breakpoint(md) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &__item {
+    display: inline-block;
+    margin-right: $spacing-lg;
+    text-decoration: none;
+    color: $color-dark;
+    height: 100%;
+    transition: 0.3s ease color;
+    &:hover {
+      color: $color-primary;
+    }
+    @include breakpoint(md) {
+      margin-right: 0;
+      margin-bottom: 10vw;
+    }
+  }
+  &__btn {
+    border: 2px solid $color-primary;
+    color: $color-primary;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 9px;
+    &:hover {
+      color: $color-light;
+      background: $color-primary;
+      transition: 0.3s ease all;
+      cursor: pointer;
+    }
+  }
+  &--active {
+    color: $color-primary;
+  }
+
+  @include breakpoint(md) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.686);
+    transform: translateX(-100vw);
+
+    transition: all 0.3s;
+  }
+}
+
+.nav--slide {
+  transform: translateX(0);
+}
+
+@media screen {
+}
