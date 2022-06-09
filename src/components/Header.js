@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MdCarRental } from "react-icons/md";
 import "./../styles/header.scss";
-
+import { Link } from "react-router-dom";
 const Header = () => {
   // const [activeNav, setActiveNav] = useState(false);
   // const clicked = (e) => {
@@ -32,14 +32,14 @@ const Header = () => {
         </div>
         <nav className={`nav ${openMenu ? "nav--slide" : ""}`}>
           <div className="nav__items">
-            <a
-              href="/"
+            <Link
+              to="/"
               // onClick={clicked}
               // className={`nav__item ${activeNav ? "nav--active" : ""}`}
               className="nav__item"
             >
               Home
-            </a>
+            </Link>
             <a href="/" className="nav__item">
               About
             </a>
@@ -49,7 +49,10 @@ const Header = () => {
             <a href="/" className="nav__item">
               Blogs
             </a>
-            <button className="nav__btn">Sign In</button>
+
+            <Link className="" aria-current="page" to="/login">
+              <button className="nav__btn">Sign In</button>
+            </Link>
           </div>
         </nav>
       </div>

@@ -1,0 +1,107 @@
+// -----------footer-seciton----------------
+@import "./variables.scss";
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 60px;
+  color: $color-light;
+  background-color: $color-dark;
+  position: relative;
+  & > :not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  &__copyright {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+  }
+}
+
+.footer-about {
+  max-width: 300px;
+  min-width: 150px;
+  &__text {
+    margin-top: 20px;
+  }
+}
+
+.footer-links {
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  &__items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__item {
+    text-decoration: none;
+    color: $color-light;
+    margin-bottom: 10px;
+    &:hover {
+      color: $color-primary;
+      transition: all 0.3s;
+    }
+  }
+}
+
+.contact {
+  max-width: 300px;
+  min-width: 150px;
+  input,
+  textarea {
+    border: 3px solid $color-dark;
+    outline: none;
+    &:focus {
+      border: 3px solid $color-primary;
+      transition: all 0.3s;
+    }
+  }
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  &__email {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-family: inherit;
+  }
+  &__message {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    height: 60px;
+    font-family: inherit;
+    outline: none;
+  }
+  &__btn {
+    width: 100%;
+    background-color: $color-primary;
+    border-radius: 8px;
+    font-weight: 700;
+    padding: 5px 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(175, 34, 2);
+      transition: all 0.3s;
+    }
+  }
+  &__details {
+    font-size: 14px;
+  }
+}
