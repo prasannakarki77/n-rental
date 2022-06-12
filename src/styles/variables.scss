@@ -28,4 +28,9 @@ $xl: 75em;
       @content;
     }
   }
+  @if $point == lg {
+    @media (max-width: $lg) {
+      @content;
+    }
+  }
 }

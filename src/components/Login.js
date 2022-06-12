@@ -9,8 +9,21 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const loginUser = (e) => {};
-
+  const loginUser = (e) => {
+    e.preventDefault();
+    const data = {
+      username: username,
+      password: password,
+    };
+    axios
+      .post("http://localhost:90/user/login", data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
   return (
     <>
       <div className="login-container">
@@ -32,27 +45,29 @@ const Login = () => {
               type="text"
               placeholder="Username"
               className="login__form-field"
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
             />
           </div>
-          {/* <div className="login__email">
-            <MdEmail />
-            <input
-              type="email"
-              placeholder="Email"
-              className="login__form-field"
-            />
-          </div> */}
-
           <div className="login__password">
             <FaKey />
             <input
               type="password"
               placeholder="Password"
               className="login__form-field"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
           </div>
           <div>
-            <input type="submit" value="Sign In" className="login__btn" />
+            <input
+              type="submit"
+              value="Sign In"
+              className="login__btn"
+              onClick={loginUser}
+            />
           </div>
           <div className="login__signup">
             <span className="login__signup--text">

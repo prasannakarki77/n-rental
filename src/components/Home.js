@@ -2,7 +2,6 @@ import { BiSearchAlt } from "react-icons/bi";
 import { FaChevronCircleRight } from "react-icons/fa";
 import { BsFillCaretRightFill } from "react-icons/bs";
 import { FaMapMarkedAlt } from "react-icons/fa";
-import { MdCarRental } from "react-icons/md";
 import "./../styles/home.scss";
 import car_drive from "../images/car-drive.png";
 
@@ -131,21 +130,17 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="about">
+      <section className="about" id="about">
         <div className="about__img">
           <img src={car_drive} alt="" />
         </div>
         <div className="about__desc">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus ac
           urna, ultricies vulputate velit velit vitae, enim auctor. Lacinia quis
-          at nunc ultrices maecenas dui. Aliquam sit ac accumsan nisl, vulputate
-          arcu interdum dictum ultrices.
           <br />
           <br />
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus ac
           urna, ultricies vulputate velit velit vitae, enim auctor. Lacinia quis
-          at nunc ultrices maecenas dui. Aliquam sit ac accumsan nisl, vulputate
-          arcu interdum dictum ultrices.
         </div>
       </section>
       <section className="blogs">

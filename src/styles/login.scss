@@ -2,8 +2,9 @@
 
 .login-container {
   //   background: linear-gradient(220.55deg, #eaeaea 0%, #8b8b8b 100%);
-  min-height: 100vh;
+  min-height: 90vh;
   position: relative;
+
   &__wave {
     position: absolute;
     z-index: -1;
@@ -21,6 +22,10 @@
   background: rgba(255, 255, 255, 0.71);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 21px;
+  @include breakpoint(sm) {
+    padding: 20px;
+    margin: 80px 20px 0 20px;
+  }
 
   div:not(:last-child) {
     position: relative;

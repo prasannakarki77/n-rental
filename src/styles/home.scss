@@ -21,6 +21,9 @@
   &__text {
     font-size: 36px;
     font-weight: 700;
+    @include breakpoint(sm) {
+      font-size: 26px;
+    }
 
     &--highlight {
       color: $color-primary;
@@ -41,11 +44,20 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
       rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+    @include breakpoint(sm) {
+      font-size: 16px;
+      width: 215px;
+    }
     cursor: pointer;
     svg {
       font-size: 34px;
       margin-left: 10px;
       font-weight: 700;
+
+      @include breakpoint(sm) {
+        font-size: 24px;
+      }
     }
     &:hover {
       transform: scale(1.05) translateY(-5px);
@@ -61,6 +73,9 @@
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 40px;
+  @include breakpoint(sm) {
+    font-size: 20px;
+  }
   svg {
     margin-left: 5px;
     color: $color-primary;
@@ -70,11 +85,18 @@
 .featured {
   padding: 60px;
 
+  @include breakpoint(md) {
+    padding: 30px;
+  }
+
   &__vehicles {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     margin-bottom: 60px;
+    @include breakpoint(sm) {
+      flex-direction: column;
+    }
   }
 
   &__brands {
@@ -84,9 +106,15 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 120px;
+    @include breakpoint(sm) {
+      max-width: 100%;
+    }
 
     &--img {
       width: 70px;
+      @include breakpoint(sm) {
+        width: 50px;
+      }
 
       img {
         width: 100%;
@@ -101,6 +129,9 @@
   margin-bottom: 40px;
   padding: 20px 10px;
   max-width: 290px;
+  @include breakpoint(sm) {
+    max-width: 100%;
+  }
   border-radius: 16px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
@@ -112,7 +143,7 @@
     img {
       width: 100%;
       height: 170px;
-      object-fit: cover;
+      object-fit: contain;
     }
   }
   &__name {
@@ -173,13 +204,20 @@
   box-shadow: 0px 1px 27px -5px rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: space-between;
-
   align-items: center;
   padding: 30px 100px;
   margin-bottom: 70px;
+  @include breakpoint(md) {
+    flex-direction: column;
+    padding: 20px;
+  }
 
   &__img {
     width: 50vw;
+    @include breakpoint(md) {
+      width: 100%;
+    }
+
     img {
       width: 100%;
       object-fit: cover;
@@ -190,6 +228,17 @@
     color: $color-grey;
     font-weight: 500;
     font-size: 20px;
+    @include breakpoint(lg) {
+      font-size: 18px;
+    }
+    @include breakpoint(md) {
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+    }
+    @include breakpoint(sm) {
+      font-size: 14px;
+    }
   }
 }
 
@@ -197,7 +246,9 @@
 
 .blogs {
   padding: 60px;
-
+  @include breakpoint(lg) {
+    padding: 20px;
+  }
   &__title-container {
     text-align: center;
   }
@@ -246,12 +297,19 @@
   display: flex;
   overflow: hidden;
   margin-bottom: 60px;
+  @include breakpoint(md) {
+    flex-direction: column;
+    align-items: center;
+  }
 
   &__img {
     img {
       height: 100%;
       width: 450px;
       object-fit: cover;
+      @include breakpoint(md) {
+        width: 100%;
+      }
     }
   }
   &__detail {
@@ -265,6 +323,9 @@
   &__desc {
     color: $color-grey;
     margin-bottom: 20px;
+    @include breakpoint(md) {
+      font-size: 14px;
+    }
   }
   &__date {
     font-size: 14px;

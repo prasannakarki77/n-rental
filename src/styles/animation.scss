@@ -1,0 +1,14 @@
+@keyframes fromTop {
+  0% {
+    visibility: hidden;
+    transform: scale(0.5);
+  }
+  20% {
+    visibility: visible;
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+    display: none;
+  }
+}

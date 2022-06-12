@@ -12,6 +12,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const registerUser = (e) => {
     e.preventDefault();
@@ -24,7 +25,11 @@ const Register = () => {
     axios
       .post("http://localhost:90/user/register", data)
       .then((res) => {
-        console.log(res);
+        if (res.data.msg === "Registered") {
+          setMessage("Registered Succefully");
+        } else {
+          setMessage("Registration Failed!! Try again");
+        }
       })
       .catch();
   };
@@ -32,6 +37,7 @@ const Register = () => {
   return (
     <>
       <div className="register-container">
+        <h1 className="register-message">{message}</h1>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"

@@ -1,8 +1,10 @@
 @import "./variables.scss";
+@import "./animation.scss";
 
 .register-container {
   min-height: 100vh;
   position: relative;
+  padding-bottom: 60px;
 
   &__wave {
     position: absolute;
@@ -11,17 +13,40 @@
   }
 }
 
+.register-message {
+  max-width: 500px;
+  font-size: 20px;
+  text-align: center;
+  color: $color-light;
+  margin: 30px auto;
+  font-weight: 400;
+  padding: 10px;
+  background-color: rgb(239, 68, 59);
+  border-radius: 7px;
+}
+// .register-message--success {
+//   background-color: rgb(26, 229, 80);
+//   animation: fromTop 5s ease-out;
+// }
+// .register-message--failed {
+//   background-color: rgb(237, 87, 87);
+//   animation: fromTop 1.5s;
+// }
+
 .register {
   max-width: 500px;
   top: 80px;
   right: 50%;
   margin: 0 auto;
-  margin-top: 60px;
+
   padding: 50px;
   background: rgba(255, 255, 255, 0.71);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 21px;
-
+  @include breakpoint(sm) {
+    padding: 20px;
+    margin: 80px 20px 0 20px;
+  }
   div:not(:last-child) {
     position: relative;
     margin-bottom: 40px;

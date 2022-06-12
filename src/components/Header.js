@@ -40,16 +40,15 @@ const Header = () => {
             >
               Home
             </Link>
-            <a href="/" className="nav__item">
+            <a href="#about" className="nav__item">
               About
             </a>
-            <a href="/" className="nav__item">
+            <Link to="/vehicle" className="nav__item">
               Vehicles
-            </a>
+            </Link>
             <a href="/" className="nav__item">
               Blogs
             </a>
-
             <Link className="" aria-current="page" to="/login">
               <button className="nav__btn">Sign In</button>
             </Link>
