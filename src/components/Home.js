@@ -149,7 +149,6 @@ const Home = () => {
             Articles and Blogs <FaMapMarkedAlt />
           </span>
         </div>
-
         <div className="blog-container">
           <div className="blog">
             <div className="blog__img">

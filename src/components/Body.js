@@ -4,6 +4,7 @@ import Register from "./Register";
 import Login from "./Login";
 import Home from "./Home";
 import Vehicle from "./Vehicle";
+import Blog from "./Blog";
 const Body = () => {
   return (
     <>
@@ -13,6 +14,7 @@ const Body = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/vehicle" element={<Vehicle />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>
       </div>
     </>

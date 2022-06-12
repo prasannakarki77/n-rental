@@ -15,14 +15,15 @@
       color: $color-grey;
       font-size: 40px;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.3s ease-out;
       &:hover {
         color: $color-primary;
+        transform: scale(1.05);
       }
     }
   }
   &__box {
-    padding: 23px 50px 23px 23px;
+    padding: 23px 60px 23px 23px;
     background: #f5f4f4;
     font-size: 20px;
     font-weight: 700;
@@ -54,6 +55,7 @@
     border-radius: 9px;
     transition: all 0.3s;
     cursor: pointer;
+    color: rgb(111, 111, 111);
     &:hover {
       box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
       transform: translateY(-10px);
