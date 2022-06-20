@@ -1,11 +1,11 @@
 import { BrowserRouter } from "react-router-dom";
-import Body from "./components/Body";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Body from "./components-user/Body";
+import Header from "./components-user/Header";
+import Footer from "./components-user/Footer";
 
-import AdminNav from "./components/AdminNav";
-import AdminLayout from "./components/AdminLayout";
-import AdminPage from "./components/AdminPage";
+import AdminNav from "./components-admin/AdminNav";
+import AdminLayout from "./components-admin/AdminLayout";
+import AdminPage from "./components-admin/AdminPage";
 
 function App() {
   return (

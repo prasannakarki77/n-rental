@@ -5,9 +5,7 @@ import Login from "./Login";
 import Home from "./Home";
 import Vehicle from "./Vehicle";
 import Blog from "./Blog";
-import AddVehicle from "./Dashboard";
-import GetUser from "./Dashboard";
-import Dashboard from "./Dashboard";
+import Dashboard from "../components-admin/Dashboard";
 const Body = () => {
   return (
     <>

@@ -4,7 +4,7 @@ import { BsPlusLg } from "react-icons/bs";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
-import FormModal from "./FormModal";
+import FormModal from "./AddVehicleForm";
 
 const Category = () => {
   const [modalShow, setModalShow] = useState(false);

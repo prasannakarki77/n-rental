@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import axios from "axios";
 import { useState } from "react";
 
-function UpdateForm(props) {
+function AddVehicleForm(props) {
   const [vehicleName, setVehicleName] = useState("");
   const [category, setCategory] = useState("");
   const [company, setCompany] = useState("");
@@ -44,6 +44,7 @@ function UpdateForm(props) {
       .then((res) => {
         if (res.data.success === true) {
           console.log("Vehicle Added Successfully");
+          window.location.replace("./vehicle");
         } else {
           console.log("Please Try Again! Something Went Wrong!!!");
         }
@@ -62,7 +63,7 @@ function UpdateForm(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Update Vehicle
+          Add Vehicle
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -128,7 +129,6 @@ function UpdateForm(props) {
                 onChange={(e) => {
                   setSku(e.target.value);
                 }}
-                value={"aaa"}
               />
             </Form.Group>
           </Row>
@@ -153,4 +153,4 @@ function UpdateForm(props) {
   );
 }
 
-export default UpdateForm;
+export default AddVehicleForm;

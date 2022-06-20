@@ -4,15 +4,18 @@ import { BsPlusLg } from "react-icons/bs";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
-import FormModal from "./FormModal";
-import UpdateForm from "./UpdateForm";
+import FormModal from "./AddVehicleForm";
+import UpdateForm from "./UpdateVehicleForm";
 import { useEffect } from "react";
 import axios from "axios";
+import AddVehicleForm from "./AddVehicleForm";
+import UpdateVehicleForm from "./UpdateVehicleForm";
 
 const VehicleDashboard = () => {
-  const [modalShow, setModalShow] = useState(false);
-  const [updateForm, setUpdateForm] = useState(false);
+  const [addForm, setAddFormShow] = useState(false);
+  const [updateForm, setUpdateFormShow] = useState(false);
   const [vehicleList, setVehicleList] = useState([]);
+  const [vehicle, setVehicle] = useState([]);
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -28,18 +31,27 @@ const VehicleDashboard = () => {
         console.log(e);
       });
   }, []);
-
+  const updateHandler = (vehicle) => {
+    setVehicle(vehicle);
+    setUpdateFormShow(true);
+  };
   return (
     <>
       <div className="dashboard-content">
         <div className="container ">
           <div className="d-flex ">
-            <Button variant="primary" onClick={() => setModalShow(true)}>
+            <Button variant="primary" onClick={() => setAddFormShow(true)}>
               <BsPlusLg /> Add Vehicle
             </Button>
-
-            <FormModal show={modalShow} onHide={() => setModalShow(false)} />
-            <UpdateForm show={updateForm} onHide={() => setUpdateForm(false)} />
+            <AddVehicleForm
+              show={addForm}
+              onHide={() => setAddFormShow(false)}
+            />
+            <UpdateVehicleForm
+              show={updateForm}
+              onHide={() => setUpdateFormShow(false)}
+              vehicle={vehicle}
+            />
 
             <button type="button" className=" ms-2 btn btn-danger">
               <FaTrashAlt /> Delete All
@@ -61,7 +73,7 @@ const VehicleDashboard = () => {
             </thead>
             <tbody>
               {vehicleList.map((vehicle) => (
-                <tr>
+                <tr key={vehicle._id}>
                   <th scope="row">{vehicleList.indexOf(vehicle) + 1}</th>
                   <td>{vehicle.vehicle_name}</td>
                   <td>{vehicle.vehicle_category}</td>
@@ -81,7 +93,7 @@ const VehicleDashboard = () => {
                     <button
                       type="button"
                       className="btn btn-primary btn-sm m-1"
-                      onClick={() => setUpdateForm(true)}
+                      onClick={() => updateHandler(vehicle)}
                     >
                       <BsFillPenFill />
                     </button>

@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import AddVehicle from "./Dashboard";
 import Category from "./Category";
+import AddVehicle from "./Dashboard";
+
 import VehicleDashboard from "./VehicleDashboard";
 
 const AdminLayout = () => {

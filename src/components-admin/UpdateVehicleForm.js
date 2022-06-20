@@ -6,16 +6,20 @@ import Row from "react-bootstrap/Row";
 import axios from "axios";
 import { useState } from "react";
 
-function FormModal(props) {
-  const [vehicleName, setVehicleName] = useState("");
-  const [category, setCategory] = useState("");
-  const [company, setCompany] = useState("");
-  const [description, setDescription] = useState("");
-  const [cost, setCost] = useState("");
-  const [sku, setSku] = useState("");
+function UpdateVehicleForm(props) {
+  const [vehicleName, setVehicleName] = useState(
+    `${props.vehicle.vehicle_name}`
+  );
+  const [category, setCategory] = useState(`${props.vehicle.vehicle_category}`);
+  const [company, setCompany] = useState(`${props.vehicle.vehicle_company}`);
+  const [description, setDescription] = useState(
+    `${props.vehicle.vehicle_desc}`
+  );
+  const [cost, setCost] = useState(`${props.vehicle.booking_cost}`);
+  const [sku, setSku] = useState(`${props.vehicle.vehicle_sku}`);
   const [image, setImage] = useState("");
 
-  const insertVehicle = (e) => {
+  const updateVehicle = (e) => {
     e.preventDefault();
     // if data is only text
     // const data = {
@@ -27,24 +31,28 @@ function FormModal(props) {
     //   vehicle_sku: sku,
     // };
     const data = new FormData();
+    data.append("_id", props.vehicle._id);
     data.append("vehicle_name", vehicleName);
     data.append("vehicle_category", category);
     data.append("vehicle_company", company);
     data.append("vehicle_desc", description);
     data.append("booking_cost", cost);
     data.append("vehicle_sku", sku);
-    data.append("v_img", image);
+    if (image !== "") {
+      data.append("v_img", image);
+    }
+
+    console.log(props.vehicle);
     const config = {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("userToken"),
       },
     };
     axios
-      .post("http://localhost:90/vehicle/insert", data, config)
+      .put("http://localhost:90/vehicle/update", data, config)
       .then((res) => {
         if (res.data.success === true) {
-          console.log("Vehicle Added Successfully");
-          window.location.replace("./vehicle");
+          console.log("Vehicle Updated Successfully");
         } else {
           console.log("Please Try Again! Something Went Wrong!!!");
         }
@@ -63,7 +71,7 @@ function FormModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Add Vehicle
+          Update Vehicle
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -75,6 +83,7 @@ function FormModal(props) {
               onChange={(e) => {
                 setVehicleName(e.target.value);
               }}
+              defaultValue={props.vehicle.vehicle_name}
             />
           </Form.Group>
           <Row className="mb-3">
@@ -85,6 +94,7 @@ function FormModal(props) {
                 onChange={(e) => {
                   setCategory(e.target.value);
                 }}
+                defaultValue={props.vehicle.vehicle_category}
               />
             </Form.Group>
 
@@ -95,6 +105,7 @@ function FormModal(props) {
                 onChange={(e) => {
                   setCompany(e.target.value);
                 }}
+                defaultValue={props.vehicle.vehicle_company}
               />
             </Form.Group>
           </Row>
@@ -108,6 +119,7 @@ function FormModal(props) {
               onChange={(e) => {
                 setDescription(e.target.value);
               }}
+              defaultValue={props.vehicle.vehicle_desc}
             />
           </Form.Group>
 
@@ -119,6 +131,7 @@ function FormModal(props) {
                 onChange={(e) => {
                   setCost(e.target.value);
                 }}
+                defaultValue={props.vehicle.booking_cost}
               />
             </Form.Group>
 
@@ -129,11 +142,22 @@ function FormModal(props) {
                 onChange={(e) => {
                   setSku(e.target.value);
                 }}
+                defaultValue={props.vehicle.vehicle_sku}
               />
             </Form.Group>
           </Row>
+          <Form.Group className="mb-3" controlId="formGridState">
+            <Form.Label>Current Image</Form.Label>
+            <Form.Control
+              onChange={(e) => {
+                setSku(e.target.value);
+              }}
+              defaultValue={props.vehicle.vehicle_image}
+              disabled
+            />
+          </Form.Group>
           <Form.Group controlId="formFile" className="mb-3">
-            <Form.Label>Default file input example</Form.Label>
+            <Form.Label>Select New Image</Form.Label>
             <Form.Control
               type="file"
               onChange={(e) => {
@@ -141,7 +165,7 @@ function FormModal(props) {
               }}
             />
           </Form.Group>
-          <Button variant="primary" type="submit" onClick={insertVehicle}>
+          <Button variant="primary" type="submit" onClick={updateVehicle}>
             Submit
           </Button>
         </Form>
@@ -153,4 +177,4 @@ function FormModal(props) {
   );
 }
 
-export default FormModal;
+export default UpdateVehicleForm;
