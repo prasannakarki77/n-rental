@@ -8,6 +8,7 @@ import { FaKey } from "react-icons/fa";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const loginUser = (e) => {
     e.preventDefault();
@@ -18,7 +19,16 @@ const Login = () => {
     axios
       .post("http://localhost:90/user/login", data)
       .then((res) => {
-        console.log(res);
+        console.log(res.data.token);
+        if (res.data.token) {
+          // it will save the token locally, so that it
+          // is available all over the component
+          localStorage.setItem("userToken", res.data.token);
+          // redirect to the any page url
+          window.location.replace("./dashboard");
+        } else {
+          setMessage("Invalid login credentials");
+        }
       })
       .catch((e) => {
         console.log(e);
@@ -27,6 +37,7 @@ const Login = () => {
   return (
     <>
       <div className="login-container">
+        <h3 className="text-center mt-5">{message}</h3>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"

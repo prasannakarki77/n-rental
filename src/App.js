@@ -5,19 +5,21 @@ import Footer from "./components/Footer";
 
 import AdminNav from "./components/AdminNav";
 import AdminLayout from "./components/AdminLayout";
-import AdminDashboard from "./components/AdminDashboard";
+import AdminPage from "./components/AdminPage";
+
 function App() {
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Header />
         <Body />
         <Footer />
-      </BrowserRouter>
+      </BrowserRouter> */}
       {/* <BrowserRouter>
         <AdminNav />
         <AdminDashboard />
       </BrowserRouter> */}
+      <AdminPage />
     </>
   );
 }

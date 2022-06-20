@@ -1,0 +1,12 @@
+@import "./variables.scss";
+.dashboard-container {
+  display: flex;
+}
+
+.dashboard-content {
+  width: 100%;
+  margin: 80px 30px;
+  background-color: $color-light;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}

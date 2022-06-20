@@ -9,13 +9,25 @@ import { ImBlog } from "react-icons/im";
 import { AiFillCar } from "react-icons/ai";
 import { BsFillBookmarksFill, BsFillBookmarkCheckFill } from "react-icons/bs";
 import { FaSignOutAlt } from "react-icons/fa";
+import { FiMenu } from "react-icons/fi";
+import { MdOutlineClose } from "react-icons/md";
 import "../styles/admin_nav.scss";
+import { useState } from "react";
 
 const AdminNav = () => {
+  const [menuState, setmenuState] = useState("false");
+  const menuClickHandler = (e) => {
+    e.preventDefault();
+    setmenuState((p) => !p);
+  };
   return (
     <>
-      <div className="sidenav">
-        <div className=""></div>
+      <div
+        className={`sidenav ${menuState ? `sidenav--open` : `sidenav--close`}`}
+      >
+        <div className="sidenav__menu" onClick={menuClickHandler}>
+          {menuState ? <MdOutlineClose /> : <FiMenu />}
+        </div>
 
         <div className="sidenav__logo">
           <MdCarRental />
@@ -26,11 +38,11 @@ const AdminNav = () => {
           <MdSpaceDashboard />
           Dashboard
         </NavLink>
-        <NavLink to="/dashboard_vehicle" className="sidenav__item">
+        <NavLink to="/vehicle" className="sidenav__item">
           <AiFillCar />
           Vehicles
         </NavLink>
-        <NavLink to="/b" className="sidenav__item">
+        <NavLink to="/category" className="sidenav__item">
           <BiCategoryAlt />
           Category
         </NavLink>
