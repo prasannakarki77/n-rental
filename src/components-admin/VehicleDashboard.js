@@ -10,12 +10,14 @@ import { useEffect } from "react";
 import axios from "axios";
 import AddVehicleForm from "./AddVehicleForm";
 import UpdateVehicleForm from "./UpdateVehicleForm";
+import { Link } from "react-router-dom";
 
 const VehicleDashboard = () => {
   const [addForm, setAddFormShow] = useState(false);
   const [updateForm, setUpdateFormShow] = useState(false);
   const [vehicleList, setVehicleList] = useState([]);
   const [vehicle, setVehicle] = useState([]);
+
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -35,6 +37,7 @@ const VehicleDashboard = () => {
     setVehicle(vehicle);
     setUpdateFormShow(true);
   };
+
   return (
     <>
       <div className="dashboard-content">
@@ -47,6 +50,7 @@ const VehicleDashboard = () => {
               show={addForm}
               onHide={() => setAddFormShow(false)}
             />
+
             <UpdateVehicleForm
               show={updateForm}
               onHide={() => setUpdateFormShow(false)}
@@ -94,15 +98,18 @@ const VehicleDashboard = () => {
                       type="button"
                       className="btn btn-primary btn-sm m-1"
                       onClick={() => updateHandler(vehicle)}
+                      
                     >
                       <BsFillPenFill />
                     </button>
-                    <button
-                      type="button"
-                      className=" btn btn-danger btn-sm m-1"
-                    >
-                      <FaTrashAlt />
-                    </button>
+                    <Link to="">
+                      <button
+                        type="button"
+                        className=" btn btn-danger btn-sm m-1"
+                      >
+                        <FaTrashAlt />
+                      </button>
+                    </Link>
                   </td>
                 </tr>
               ))}
