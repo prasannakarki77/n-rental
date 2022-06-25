@@ -5,16 +5,15 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import UpdateVehicleImage from "./UpdatVehicleImage";
 
 function UpdateVehicleForm(props) {
   const [vehicleName, setVehicleName] = useState("");
-
   const [category, setCategory] = useState("");
   const [company, setCompany] = useState("");
   const [description, setDescription] = useState("");
   const [cost, setCost] = useState("");
   const [sku, setSku] = useState("");
-  const [image, setImage] = useState("");
 
   useEffect(() => {
     if (vehicleName === "") {
@@ -166,11 +165,26 @@ function UpdateVehicleForm(props) {
               />
             </Form.Group>
           </Row>
-          <Form.Group className="mb-3" controlId="formGridState">
+
+          {/* <Form.Group className="mb-3" controlId="formGridState">
             <Form.Label>Current Image</Form.Label>
-            <Form.Control defaultValue={props.vehicle.vehicle_image} disabled />
-          </Form.Group>
-          <Form.Group controlId="formFile" className="mb-3">
+            <div className="image-update">
+              <Form.Control
+                defaultValue={props.vehicle.vehicle_image}
+                disabled
+                className="image-update__field"
+              />{" "}
+              <Button
+                variant="secondary"
+                type="submit"
+                className="image-update__btn ms-2"
+              >
+                Change Image
+              </Button>
+            </div>
+          </Form.Group> */}
+
+          {/* <Form.Group controlId="formFile" className="mb-3">
             <Form.Label>Select New Image</Form.Label>
             <Form.Control
               type="file"
@@ -178,7 +192,8 @@ function UpdateVehicleForm(props) {
                 setImage(e.target.files[0]);
               }}
             />
-          </Form.Group>
+          </Form.Group> */}
+
           <Button variant="primary" type="submit" onClick={updateVehicle}>
             Submit
           </Button>

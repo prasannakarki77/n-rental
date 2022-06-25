@@ -1,6 +1,7 @@
-import { BsFillPenFill } from "react-icons/bs";
+import { BsFillPenFill, BsUpda } from "react-icons/bs";
 import { FaTrashAlt } from "react-icons/fa";
-import { BsPlusLg } from "react-icons/bs";
+import { BsPlusLg, BsImageAlt } from "react-icons/bs";
+import { MdAddPhotoAlternate } from "react-icons/md";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
@@ -12,11 +13,13 @@ import AddVehicleForm from "./AddVehicleForm";
 import UpdateVehicleForm from "./UpdateVehicleForm";
 import { Link } from "react-router-dom";
 import DeleteVehicle from "./DeleteVehicle";
+import UpdateVehicleImage from "./UpdatVehicleImage";
 
 const VehicleDashboard = () => {
   const [addForm, setAddFormShow] = useState(false);
   const [updateForm, setUpdateFormShow] = useState(false);
   const [deletePopup, setDeletePopUp] = useState(false);
+  const [imageUpdate, setImageUpdate] = useState(false);
   const [vehicleList, setVehicleList] = useState([]);
   const [vehicle, setVehicle] = useState([]);
 
@@ -30,11 +33,13 @@ const VehicleDashboard = () => {
       .get("http://localhost:90/vehicle/dashboard", config)
       .then((res) => {
         setVehicleList(res.data.data);
+        console.log(vehicleList);
       })
       .catch((e) => {
         console.log(e);
       });
   }, []);
+
   const updateHandler = (vehicle) => {
     setVehicle(vehicle);
     setUpdateFormShow(true);
@@ -42,6 +47,10 @@ const VehicleDashboard = () => {
   const deleteHandler = (vehicle) => {
     setVehicle(vehicle);
     setDeletePopUp(true);
+  };
+  const imageUpdateHandler = (vehicle) => {
+    setVehicle(vehicle);
+    setImageUpdate(true);
   };
 
   return (
@@ -65,6 +74,11 @@ const VehicleDashboard = () => {
             <DeleteVehicle
               show={deletePopup}
               onHide={() => setDeletePopUp(false)}
+              vehicle={vehicle}
+            />
+            <UpdateVehicleImage
+              show={imageUpdate}
+              onHide={() => setImageUpdate(false)}
               vehicle={vehicle}
             />
 
@@ -97,13 +111,23 @@ const VehicleDashboard = () => {
                   <td>{vehicle.booking_cost}</td>
                   <td>{vehicle.vehicle_sku}</td>
                   <td>
-                    <img
-                      src={`http://localhost:90/${vehicle.vehicle_image}`}
-                      alt="vehicle"
-                      height={100}
-                      width={200}
-                    />
+                    <div className="table-image">
+                      <img
+                        src={`http://localhost:90/${vehicle.vehicle_image}`}
+                        alt="vehicle"
+                        height={100}
+                        width={200}
+                      />
+                      <button
+                        type="button"
+                        className="btn action-btns btn-success table-image__btn btn-sm m-1"
+                        onClick={() => imageUpdateHandler(vehicle)}
+                      >
+                        <MdAddPhotoAlternate />
+                      </button>
+                    </div>
                   </td>
+
                   <td className="action-btns ">
                     <button
                       type="button"
