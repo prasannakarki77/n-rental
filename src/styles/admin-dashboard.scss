@@ -10,3 +10,21 @@
   padding: 30px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
+.table-image {
+  width: 200px;
+
+  display: block;
+  position: relative;
+  img {
+    width: 100%;
+  }
+  &__btn {
+    position: absolute;
+    z-index: 11;
+    top: 0;
+    right: 0;
+    svg {
+      font-size: 20px;
+    }
+  }
+}

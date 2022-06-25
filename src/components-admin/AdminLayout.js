@@ -1,9 +1,8 @@
 import { Routes, Route } from "react-router-dom";
+import ArticleDashboard from "./article/ArticleDashboard";
 import Category from "./Category";
 import AddVehicle from "./Dashboard";
-import UpdateVehicleForm from "./UpdateVehicleForm";
-
-import VehicleDashboard from "./VehicleDashboard";
+import VehicleDashboard from "./vehicle/VehicleDashboard";
 
 const AdminLayout = () => {
   return (
@@ -12,7 +11,7 @@ const AdminLayout = () => {
         <Route path="/" element={<AddVehicle />} />
         <Route path="/category" element={<Category />} />
         <Route path="/vehicle" element={<VehicleDashboard />} />
-        <Route path="/updatev/:id" element={<UpdateVehicleForm />} />
+        <Route path="/article" element={<ArticleDashboard />} />
       </Routes>
     </>
   );

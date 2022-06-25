@@ -46,9 +46,9 @@ const AdminNav = () => {
           <BiCategoryAlt />
           Category
         </NavLink>
-        <NavLink to="/c" className="sidenav__item">
+        <NavLink to="/article" className="sidenav__item">
           <ImBlog />
-          Blogs
+          Article
         </NavLink>
         <NavLink to="/d" className="sidenav__item">
           <BsFillBookmarksFill />
