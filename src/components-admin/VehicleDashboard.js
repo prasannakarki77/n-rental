@@ -11,10 +11,12 @@ import axios from "axios";
 import AddVehicleForm from "./AddVehicleForm";
 import UpdateVehicleForm from "./UpdateVehicleForm";
 import { Link } from "react-router-dom";
+import DeleteVehicle from "./DeleteVehicle";
 
 const VehicleDashboard = () => {
   const [addForm, setAddFormShow] = useState(false);
   const [updateForm, setUpdateFormShow] = useState(false);
+  const [deletePopup, setDeletePopUp] = useState(false);
   const [vehicleList, setVehicleList] = useState([]);
   const [vehicle, setVehicle] = useState([]);
 
@@ -37,6 +39,10 @@ const VehicleDashboard = () => {
     setVehicle(vehicle);
     setUpdateFormShow(true);
   };
+  const deleteHandler = (vehicle) => {
+    setVehicle(vehicle);
+    setDeletePopUp(true);
+  };
 
   return (
     <>
@@ -54,6 +60,11 @@ const VehicleDashboard = () => {
             <UpdateVehicleForm
               show={updateForm}
               onHide={() => setUpdateFormShow(false)}
+              vehicle={vehicle}
+            />
+            <DeleteVehicle
+              show={deletePopup}
+              onHide={() => setDeletePopUp(false)}
               vehicle={vehicle}
             />
 
@@ -98,7 +109,6 @@ const VehicleDashboard = () => {
                       type="button"
                       className="btn btn-primary btn-sm m-1"
                       onClick={() => updateHandler(vehicle)}
-                      
                     >
                       <BsFillPenFill />
                     </button>
@@ -106,6 +116,7 @@ const VehicleDashboard = () => {
                       <button
                         type="button"
                         className=" btn btn-danger btn-sm m-1"
+                        onClick={() => deleteHandler(vehicle)}
                       >
                         <FaTrashAlt />
                       </button>
