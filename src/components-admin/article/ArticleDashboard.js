@@ -56,7 +56,7 @@ const ArticleDashboard = () => {
         <div className="container ">
           <div className="d-flex ">
             <Button variant="primary" onClick={() => setAddArticle(true)}>
-              <BsPlusLg /> Add Vehicle
+              <BsPlusLg /> Add Article
             </Button>
             <AddArticle show={addArticle} onHide={() => setAddArticle(false)} />
             <UpdateArticle
@@ -87,6 +87,7 @@ const ArticleDashboard = () => {
                 <th scope="col">Description</th>
                 <th scope="col">Rich Description</th>
                 <th scope="col">Image</th>
+                <th scope="col">Featured</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
@@ -115,6 +116,7 @@ const ArticleDashboard = () => {
                       </button>
                     </div>
                   </td>
+                  <td>{`${article.is_featured}`}</td>
 
                   <td className="action-btns ">
                     <button

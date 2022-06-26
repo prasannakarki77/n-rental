@@ -12,7 +12,9 @@ function AddArticle(props) {
   const [description, setDescription] = useState("");
   const [rich_description, setRichDescription] = useState("");
   const [image, setImage] = useState("");
+  const [isFeatured, setIsFeatured] = useState(false);
   const insertArticle = (e) => {
+    console.log(isFeatured);
     e.preventDefault();
     // if data is only text
     // const data = {
@@ -29,6 +31,7 @@ function AddArticle(props) {
     data.append("description", description);
     data.append("rich_description", rich_description);
     data.append("a_img", image);
+    data.append("is_featured", isFeatured);
     const config = {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -39,7 +42,7 @@ function AddArticle(props) {
       .then((res) => {
         if (res.data.success === true) {
           console.log("Article Added Successfully");
-          window.location.replace("./article");
+          // window.location.replace("./article");
         } else {
           console.log("Please Try Again! Something Went Wrong!!!");
         }
@@ -111,6 +114,15 @@ function AddArticle(props) {
               onChange={(e) => {
                 setImage(e.target.files[0]);
               }}
+            />
+          </Form.Group>
+          <Form.Group controlId="formFile" className="mb-3">
+            <Form.Check
+              type={"checkbox"}
+              id={`default-checkbox`}
+              label={`Featured Article`}
+              checked={isFeatured}
+              onChange={(e) => setIsFeatured(e.target.checked)}
             />
           </Form.Group>
           <Button variant="primary" type="submit" onClick={insertArticle}>

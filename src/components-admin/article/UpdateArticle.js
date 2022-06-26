@@ -9,9 +9,8 @@ function UpdateArticle(props) {
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [rich_description, setRichDescription] = useState("");
-
+  const [is_featured, setIsFeatured] = useState("");
   useEffect(() => {
-    console.log(props.article);
     if (title === "") {
       setTitle(props.article.title);
     }
@@ -24,6 +23,9 @@ function UpdateArticle(props) {
     if (rich_description === "") {
       setRichDescription(props.article.rich_description);
     }
+    if (is_featured === "") {
+      setIsFeatured(props.article.is_featured);
+    }
   }, []);
 
   const updateArticle = (e) => {
@@ -34,6 +36,7 @@ function UpdateArticle(props) {
       date: date,
       description: description,
       rich_description: rich_description,
+      is_featured: is_featured,
     };
 
     const config = {
@@ -117,6 +120,15 @@ function UpdateArticle(props) {
             />
           </Form.Group>
 
+          <Form.Group controlId="formFile" className="mb-3">
+            <Form.Check
+              type={"checkbox"}
+              id={`default-checkbox`}
+              label={`Featured Article`}
+              defaultChecked={props.article.is_featured}
+              onChange={(e) => setIsFeatured(e.target.checked)}
+            />
+          </Form.Group>
           <Button variant="primary" type="submit" onClick={updateArticle}>
             Submit
           </Button>
