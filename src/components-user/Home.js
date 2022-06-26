@@ -4,8 +4,27 @@ import { BsFillCaretRightFill } from "react-icons/bs";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import "./../styles/home.scss";
 import car_drive from "../images/car-drive.png";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Home = () => {
+  const [articleList, setArticleList] = useState([]);
+  const config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("userToken"),
+    },
+  };
+  useEffect(() => {
+    axios
+      .get("http://localhost:90/article/get", config)
+      .then((res) => {
+        setArticleList(res.data.data);
+        console.log(articleList);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
   return (
     <>
       <section className="hero">
@@ -150,7 +169,29 @@ const Home = () => {
           </span>
         </div>
         <div className="blog-container">
-          <div className="blog">
+          {articleList.map((article) => {
+            if (article.is_featured) {
+              return (
+                <div className="blog">
+                  <div className="blog__img">
+                    <img
+                      src={`http://localhost:90/${article.image}`}
+                      alt="blog_image"
+                    />
+                  </div>
+                  <div className="blog__detail">
+                    <div className="blog__title">{article.title}</div>
+                    <div className="blog__desc">{article.description}</div>
+                    <div className="blog__date">{article.date}</div>
+                    <button className="blog__read-more-btn">
+                      Read more <FaChevronCircleRight />
+                    </button>
+                  </div>
+                </div>
+              );
+            }
+          })}
+          {/* <div className="blog">
             <div className="blog__img">
               <img
                 src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
@@ -205,7 +246,7 @@ const Home = () => {
                 Read more <FaChevronCircleRight />
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
         <button className="featured__view-more-btn view-more-btn">
           View all <BsFillCaretRightFill />

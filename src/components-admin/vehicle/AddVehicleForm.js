@@ -44,7 +44,7 @@ function AddVehicleForm(props) {
       .then((res) => {
         if (res.data.success === true) {
           console.log("Vehicle Added Successfully");
-          window.location.replace("./vehicle");
+          window.location.replace("/vehicle");
         } else {
           console.log("Please Try Again! Something Went Wrong!!!");
         }

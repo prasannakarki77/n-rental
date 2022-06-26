@@ -42,7 +42,7 @@ function AddArticle(props) {
       .then((res) => {
         if (res.data.success === true) {
           console.log("Article Added Successfully");
-          // window.location.replace("./article");
+          window.location.replace("/article");
         } else {
           console.log("Please Try Again! Something Went Wrong!!!");
         }

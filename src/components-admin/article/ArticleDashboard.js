@@ -26,7 +26,7 @@ const ArticleDashboard = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:90/article/dashboard", config)
+      .get("http://localhost:90/article/get", config)
       .then((res) => {
         setArticleList(res.data.data);
         console.log(articleList);

@@ -2,13 +2,11 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
-function DeleteArticle(props) {
-  console.log(props.article);
-  const id = props.article._id;
+function DeleteCategory(props) {
+  const id = props.category._id;
 
-  const deleteArticle = (e) => {
+  const deleteCategory = (e) => {
     e.preventDefault();
-
     const config = {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -16,11 +14,11 @@ function DeleteArticle(props) {
     };
 
     axios
-      .delete(`http://localhost:90/article/delete/${id}`, config)
+      .delete(`http://localhost:90/category/delete/${id}`, config)
       .then((res) => {
         if (res.data.success === true) {
-          window.location.replace("./article");
-          console.log("Article Deleted Successfully");
+          window.location.replace("/category");
+          console.log("Category Deleted Successfully");
         } else {
           console.log("Please Try Again! Something Went Wrong!!!");
         }
@@ -40,10 +38,10 @@ function DeleteArticle(props) {
     >
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
-        <h5>Are you sure you want to delete this article?</h5>
+        <h5>Are you sure you want to delete this category?</h5>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={deleteArticle}>Yes</Button>
+        <Button onClick={deleteCategory}>Yes</Button>
         <Button className="btn-danger" onClick={props.onHide}>
           No
         </Button>
@@ -52,4 +50,4 @@ function DeleteArticle(props) {
   );
 }
 
-export default DeleteArticle;
+export default DeleteCategory;
