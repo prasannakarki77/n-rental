@@ -10,16 +10,16 @@ import AdminPage from "./components-admin/AdminPage";
 function App() {
   return (
     <>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Header />
         <Body />
         <Footer />
-      </BrowserRouter> */}
+      </BrowserRouter>
       {/* <BrowserRouter>
         <AdminNav />
         <AdminDashboard />
       </BrowserRouter> */}
-      <AdminPage />
+      {/* <AdminPage /> */}
     </>
   );
 }

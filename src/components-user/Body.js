@@ -6,6 +6,7 @@ import Home from "./Home";
 import Vehicle from "./Vehicle";
 import Blog from "./Blog";
 import Dashboard from "../components-admin/Dashboard";
+import ArticlePage from "./ArticlePage";
 const Body = () => {
   return (
     <>
@@ -17,6 +18,7 @@ const Body = () => {
           <Route path="/vehicle" element={<Vehicle />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/article/single/:id" element={<ArticlePage />} />
         </Routes>
       </div>
     </>

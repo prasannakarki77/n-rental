@@ -3,6 +3,7 @@ import { BsFillCaretRightFill } from "react-icons/bs";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 const Blog = () => {
   const [articleList, setArticleList] = useState([]);
@@ -44,9 +45,11 @@ const Blog = () => {
                 <div className="blog__title">{article.title}</div>
                 <div className="blog__desc">{article.description}</div>
                 <div className="blog__date">{article.date}</div>
-                <button className="blog__read-more-btn">
-                  Read more <FaChevronCircleRight />
-                </button>
+                <Link to={"/article/single/" + article._id}>
+                  <button className="blog__read-more-btn">
+                    Read more <FaChevronCircleRight />
+                  </button>
+                </Link>
               </div>
             </div>
           ))}
@@ -101,9 +104,11 @@ const Blog = () => {
                 semper quis nulla. Diam sit lectus sagittis pellentesque.
               </div>
               <div className="blog__date">Jan 20, 2021</div>
-              <button className="blog__read-more-btn">
-                Read more <FaChevronCircleRight />
-              </button>
+              <Link to={"/vehicle/single + "}>
+                <button className="blog__read-more-btn">
+                  Read more <FaChevronCircleRight />
+                </button>
+              </Link>
             </div>
           </div>
         </div>

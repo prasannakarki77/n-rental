@@ -249,6 +249,9 @@
   @include breakpoint(lg) {
     padding: 20px;
   }
+  a {
+    text-decoration: none;
+  }
   &__title-container {
     text-align: center;
   }
