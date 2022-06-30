@@ -4,7 +4,26 @@ import car_red from "../images/car-red.png";
 import bike_red from "../images/bike-red.png";
 import bus_red from "../images/bus-red.png";
 import van_red from "../images/van-red.png";
+import { useState, useEffect } from "react";
+import axios from "axios";
 const Vehicle = () => {
+  const [vehicleList, setVehicleList] = useState([]);
+  const config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("userToken"),
+    },
+  };
+  useEffect(() => {
+    axios
+      .get("http://localhost:90/vehicle/get", config)
+      .then((res) => {
+        setVehicleList(res.data.data);
+        console.log(vehicleList);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
   return (
     <>
       <div className="search">
@@ -37,142 +56,25 @@ const Vehicle = () => {
       </div>
       <section className="featured">
         <div className="featured__vehicles">
-          <div className="vehicle-card">
-            <div className="vehicle-card__img">
-              <img
-                src="https://www.carrentalsrinagar.com/wp-content/uploads/2018/12/13Seater-winger-900x600.webp"
-                alt="vehicle"
-              />
+          {vehicleList.map((vehicle) => (
+            <div className="vehicle-card">
+              <div className="vehicle-card__img">
+                <img
+                  src={`http://localhost:90/${vehicle.vehicle_image}`}
+                  alt="vehicle"
+                />
+              </div>
+              <div className="vehicle-card__name">{vehicle.vehicle_name}</div>
+              <div className="vehicle-card__desc">{vehicle.vehicle_desc}</div>
+              <div className="vehicle-card__bookcost">
+                <span className="vehicle-card__bookcost--rs">
+                  Rs {vehicle.booking_cost}{" "}
+                </span>
+                / day
+              </div>
+              <button className="vehicle-card__btn">Book now</button>
             </div>
-            <div className="vehicle-card__name">TATA winger</div>
-            <div className="vehicle-card__desc">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
-              morbi facilisis feugiat viverra sit.
-            </div>
-            <div className="vehicle-card__bookcost">
-              <span className="vehicle-card__bookcost--rs">Rs 1000 </span>/ day
-            </div>
-            <button className="vehicle-card__btn">Book now</button>
-          </div>
-          <div className="vehicle-card">
-            <div className="vehicle-card__img">
-              <img
-                src="https://www.pngmart.com/files/4/Tesla-PNG-Transparent-Picture.png"
-                alt="vehicle"
-              />
-            </div>
-            <div className="vehicle-card__name">Tesla</div>
-            <div className="vehicle-card__desc">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
-              morbi facilisis feugiat viverra sit.
-            </div>
-            <div className="vehicle-card__bookcost">
-              <span className="vehicle-card__bookcost--rs">Rs 1000 </span>/ day
-            </div>
-            <button className="vehicle-card__btn">Book now</button>
-          </div>
-          <div className="vehicle-card">
-            <div className="vehicle-card__img">
-              <img
-                src="https://www.freeiconspng.com/thumbs/bus-png/bus-png-4.png"
-                alt="vehicle"
-              />
-            </div>
-            <div className="vehicle-card__name">Hiace Bus</div>
-            <div className="vehicle-card__desc">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
-              morbi facilisis feugiat viverra sit.
-            </div>
-            <div className="vehicle-card__bookcost">
-              <span className="vehicle-card__bookcost--rs">Rs 1000 </span>/ day
-            </div>
-            <button className="vehicle-card__btn">Book now</button>
-          </div>
-          <div className="vehicle-card">
-            <div className="vehicle-card__img">
-              <img
-                src="https://ic1.maxabout.us/autos/tw_india//Y/2022/4/yamaha-mt-15-ice-fluo-edition-side-view.jpg"
-                alt="vehicle"
-              />
-            </div>
-            <div className="vehicle-card__name">MT-15 BS6</div>
-            <div className="vehicle-card__desc">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
-              morbi facilisis feugiat viverra sit.
-            </div>
-            <div className="vehicle-card__bookcost">
-              <span className="vehicle-card__bookcost--rs">Rs 1000 </span>/ day
-            </div>
-            <button className="vehicle-card__btn">Book now</button>
-          </div>
-          <div className="vehicle-card">
-            <div className="vehicle-card__img">
-              <img
-                src="https://www.carrentalsrinagar.com/wp-content/uploads/2018/12/13Seater-winger-900x600.webp"
-                alt="vehicle"
-              />
-            </div>
-            <div className="vehicle-card__name">TATA winger</div>
-            <div className="vehicle-card__desc">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
-              morbi facilisis feugiat viverra sit.
-            </div>
-            <div className="vehicle-card__bookcost">
-              <span className="vehicle-card__bookcost--rs">Rs 1000 </span>/ day
-            </div>
-            <button className="vehicle-card__btn">Book now</button>
-          </div>
-          <div className="vehicle-card">
-            <div className="vehicle-card__img">
-              <img
-                src="https://www.pngmart.com/files/4/Tesla-PNG-Transparent-Picture.png"
-                alt="vehicle"
-              />
-            </div>
-            <div className="vehicle-card__name">Tesla</div>
-            <div className="vehicle-card__desc">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
-              morbi facilisis feugiat viverra sit.
-            </div>
-            <div className="vehicle-card__bookcost">
-              <span className="vehicle-card__bookcost--rs">Rs 1000 </span>/ day
-            </div>
-            <button className="vehicle-card__btn">Book now</button>
-          </div>
-          <div className="vehicle-card">
-            <div className="vehicle-card__img">
-              <img
-                src="https://www.freeiconspng.com/thumbs/bus-png/bus-png-4.png"
-                alt="vehicle"
-              />
-            </div>
-            <div className="vehicle-card__name">Hiace Bus</div>
-            <div className="vehicle-card__desc">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
-              morbi facilisis feugiat viverra sit.
-            </div>
-            <div className="vehicle-card__bookcost">
-              <span className="vehicle-card__bookcost--rs">Rs 1000 </span>/ day
-            </div>
-            <button className="vehicle-card__btn">Book now</button>
-          </div>
-          <div className="vehicle-card">
-            <div className="vehicle-card__img">
-              <img
-                src="https://ic1.maxabout.us/autos/tw_india//Y/2022/4/yamaha-mt-15-ice-fluo-edition-side-view.jpg"
-                alt="vehicle"
-              />
-            </div>
-            <div className="vehicle-card__name">MT-15 BS6</div>
-            <div className="vehicle-card__desc">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
-              morbi facilisis feugiat viverra sit.
-            </div>
-            <div className="vehicle-card__bookcost">
-              <span className="vehicle-card__bookcost--rs">Rs 1000 </span>/ day
-            </div>
-            <button className="vehicle-card__btn">Book now</button>
-          </div>
+          ))}
         </div>
       </section>
     </>

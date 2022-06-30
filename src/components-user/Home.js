@@ -5,10 +5,12 @@ import { FaMapMarkedAlt } from "react-icons/fa";
 import "./../styles/home.scss";
 import car_drive from "../images/car-drive.png";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Home = () => {
   const [articleList, setArticleList] = useState([]);
+  const [vehicleList, setVehicleList] = useState([]);
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -20,6 +22,15 @@ const Home = () => {
       .then((res) => {
         setArticleList(res.data.data);
         console.log(articleList);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    axios
+      .get("http://localhost:90/vehicle/get", config)
+      .then((res) => {
+        setVehicleList(res.data.data);
+        console.log(vehicleList);
       })
       .catch((e) => {
         console.log(e);
@@ -44,78 +55,39 @@ const Home = () => {
           Featured Rides <FaChevronCircleRight />
         </div>
         <div className="featured__vehicles">
-          <div className="vehicle-card">
-            <div className="vehicle-card__img">
-              <img
-                src="https://www.carrentalsrinagar.com/wp-content/uploads/2018/12/13Seater-winger-900x600.webp"
-                alt="vehicle"
-              />
-            </div>
-            <div className="vehicle-card__name">TATA winger</div>
-            <div className="vehicle-card__desc">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
-              morbi facilisis feugiat viverra sit.
-            </div>
-            <div className="vehicle-card__bookcost">
-              <span className="vehicle-card__bookcost--rs">Rs 1000 </span>/ day
-            </div>
-            <button className="vehicle-card__btn">Book now</button>
-          </div>
-          <div className="vehicle-card">
-            <div className="vehicle-card__img">
-              <img
-                src="https://www.pngmart.com/files/4/Tesla-PNG-Transparent-Picture.png"
-                alt="vehicle"
-              />
-            </div>
-            <div className="vehicle-card__name">Tesla</div>
-            <div className="vehicle-card__desc">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
-              morbi facilisis feugiat viverra sit.
-            </div>
-            <div className="vehicle-card__bookcost">
-              <span className="vehicle-card__bookcost--rs">Rs 1000 </span>/ day
-            </div>
-            <button className="vehicle-card__btn">Book now</button>
-          </div>
-          <div className="vehicle-card">
-            <div className="vehicle-card__img">
-              <img
-                src="https://www.freeiconspng.com/thumbs/bus-png/bus-png-4.png"
-                alt="vehicle"
-              />
-            </div>
-            <div className="vehicle-card__name">Hiace Bus</div>
-            <div className="vehicle-card__desc">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
-              morbi facilisis feugiat viverra sit.
-            </div>
-            <div className="vehicle-card__bookcost">
-              <span className="vehicle-card__bookcost--rs">Rs 1000 </span>/ day
-            </div>
-            <button className="vehicle-card__btn">Book now</button>
-          </div>
-          <div className="vehicle-card">
-            <div className="vehicle-card__img">
-              <img
-                src="https://ic1.maxabout.us/autos/tw_india//Y/2022/4/yamaha-mt-15-ice-fluo-edition-side-view.jpg"
-                alt="vehicle"
-              />
-            </div>
-            <div className="vehicle-card__name">MT-15 BS6</div>
-            <div className="vehicle-card__desc">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
-              morbi facilisis feugiat viverra sit.
-            </div>
-            <div className="vehicle-card__bookcost">
-              <span className="vehicle-card__bookcost--rs">Rs 1000 </span>/ day
-            </div>
-            <button className="vehicle-card__btn">Book now</button>
-          </div>
+          {vehicleList.map((vehicle) => {
+            if (vehicle.is_featured) {
+              return (
+                <div className="vehicle-card">
+                  <div className="vehicle-card__img">
+                    <img
+                      src={`http://localhost:90/${vehicle.vehicle_image}`}
+                      alt="vehicle"
+                    />
+                  </div>
+                  <div className="vehicle-card__name">
+                    {vehicle.vehicle_name}
+                  </div>
+                  <div className="vehicle-card__desc">
+                    {vehicle.vehicle_desc}
+                  </div>
+                  <div className="vehicle-card__bookcost">
+                    <span className="vehicle-card__bookcost--rs">
+                      Rs {vehicle.booking_cost}{" "}
+                    </span>
+                    / day
+                  </div>
+                  <button className="vehicle-card__btn">Book now</button>
+                </div>
+              );
+            }
+          })}
         </div>
-        <button className="featured__view-more-btn view-more-btn">
-          View more <BsFillCaretRightFill />
-        </button>
+        <Link to="/vehicle">
+          <button className="featured__view-more-btn view-more-btn">
+            View more <BsFillCaretRightFill />
+          </button>
+        </Link>
         <div className="featured__brands">
           <div className="featured__brands--img">
             <img
@@ -191,66 +163,12 @@ const Home = () => {
               );
             }
           })}
-          {/* <div className="blog">
-            <div className="blog__img">
-              <img
-                src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
-                alt="blog_image"
-              />
-            </div>
-            <div className="blog__detail">
-              <div className="blog__title">
-                Lorem ipsum dolor sit amet, consectetur
-              </div>
-              <div className="blog__desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero,
-                amet, tortor sit eros, habitasse lectus tincidunt est vulputate.
-                Vel risus euismod viverra in ac. Leo quisque vitae duis ante
-                dignissim et aliquam.
-                <br />
-                <br />
-                Elementum bibendum blandit etiam purus. Praesent viverra ac
-                sagittis elit nulla egestas dui nunc. Auctor elementum nisl in
-                semper quis nulla. Diam sit lectus sagittis pellentesque.
-              </div>
-              <div className="blog__date">Jan 20, 2021</div>
-              <button className="blog__read-more-btn">
-                Read more <FaChevronCircleRight />
-              </button>
-            </div>
-          </div>
-          <div className="blog">
-            <div className="blog__img">
-              <img
-                src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                alt="blog_image"
-              />
-            </div>
-            <div className="blog__detail">
-              <div className="blog__title">
-                Lorem ipsum dolor sit amet, consectetur
-              </div>
-              <div className="blog__desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero,
-                amet, tortor sit eros, habitasse lectus tincidunt est vulputate.
-                Vel risus euismod viverra in ac. Leo quisque vitae duis ante
-                dignissim et aliquam.
-                <br />
-                <br />
-                Elementum bibendum blandit etiam purus. Praesent viverra ac
-                sagittis elit nulla egestas dui nunc. Auctor elementum nisl in
-                semper quis nulla. Diam sit lectus sagittis pellentesque.
-              </div>
-              <div className="blog__date">Jan 20, 2021</div>
-              <button className="blog__read-more-btn">
-                Read more <FaChevronCircleRight />
-              </button>
-            </div>
-          </div> */}
         </div>
-        <button className="featured__view-more-btn view-more-btn">
-          View all <BsFillCaretRightFill />
-        </button>
+        <Link to="/blog">
+          <button className="featured__view-more-btn view-more-btn">
+            View all <BsFillCaretRightFill />
+          </button>
+        </Link>
       </section>
     </>
   );

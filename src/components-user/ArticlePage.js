@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import "../styles/article.scss";
 const ArticlePage = () => {
   const [article, setArticle] = useState([]);
   const { id } = useParams();

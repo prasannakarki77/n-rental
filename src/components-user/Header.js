@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MdCarRental } from "react-icons/md";
 import "./../styles/header.scss";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const Header = () => {
   // const [activeNav, setActiveNav] = useState(false);
   // const clicked = (e) => {
@@ -18,10 +18,12 @@ const Header = () => {
   return (
     <>
       <div className="header">
-        <div className="logo">
-          <MdCarRental />
-          N-Rental
-        </div>
+        <Link to="/">
+          <div className="logo">
+            <MdCarRental />
+            N-Rental
+          </div>
+        </Link>
         <div
           className={`menu ${openMenu ? "menu--open" : ""}`}
           onClick={menuClickHandler}
@@ -40,9 +42,9 @@ const Header = () => {
             >
               Home
             </Link>
-            <a href="#about" className="nav__item">
+            <Link to="/about" className="nav__item">
               About
-            </a>
+            </Link>
             <Link to="/vehicle" className="nav__item">
               Vehicles
             </Link>

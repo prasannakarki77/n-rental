@@ -12,8 +12,10 @@ function UpdateVehicleForm(props) {
   const [category, setCategory] = useState("");
   const [company, setCompany] = useState("");
   const [description, setDescription] = useState("");
+  const [richDescription, setRichDescription] = useState("");
   const [cost, setCost] = useState("");
   const [sku, setSku] = useState("");
+  const [isFeatured, setIsFeatured] = useState(false);
 
   useEffect(() => {
     if (vehicleName === "") {
@@ -33,6 +35,12 @@ function UpdateVehicleForm(props) {
     }
     if (sku === "") {
       setSku(props.vehicle.vehicle_sku);
+    }
+    if (richDescription === "") {
+      setRichDescription(props.vehicle.vehicle_rich_desc);
+    }
+    if (isFeatured === "") {
+      setIsFeatured(props.vehicle.is_featured);
     }
   }, []);
 
@@ -57,6 +65,8 @@ function UpdateVehicleForm(props) {
       vehicle_desc: description,
       booking_cost: cost,
       vehicle_sku: sku,
+      vehicle_rich_desc: richDescription,
+      is_featured: isFeatured,
     };
 
     const config = {
@@ -106,7 +116,7 @@ function UpdateVehicleForm(props) {
             />
           </Form.Group>
           <Row className="mb-3">
-            <Form.Group as={Col} controlId="formGridEmail">
+            {/* <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label>Category</Form.Label>
               <Form.Control
                 placeholder="Enter category"
@@ -115,6 +125,22 @@ function UpdateVehicleForm(props) {
                 }}
                 defaultValue={props.vehicle.vehicle_category}
               />
+            </Form.Group> */}
+            <Form.Group as={Col} controlId="formGridCategory">
+              <Form.Label>Category</Form.Label>
+              <Form.Select
+                defaultValue={props.vehicle.vehicle_category}
+                aria-label="Default select example"
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                }}
+              >
+                {props.categoryList.map((data) => (
+                  <option value={`${data.category_name}`}>
+                    {data.category_name}
+                  </option>
+                ))}
+              </Form.Select>
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridPassword">
@@ -141,6 +167,18 @@ function UpdateVehicleForm(props) {
               defaultValue={props.vehicle.vehicle_desc}
             />
           </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Rich Description</Form.Label>
+            <Form.Control
+              placeholder="Enter rich description"
+              as="textarea"
+              rows={4}
+              onChange={(e) => {
+                setRichDescription(e.target.value);
+              }}
+              defaultValue={props.vehicle.vehicle_rich_desc}
+            />
+          </Form.Group>
 
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridCity">
@@ -165,6 +203,15 @@ function UpdateVehicleForm(props) {
               />
             </Form.Group>
           </Row>
+          <Form.Group controlId="formFile" className="mb-3">
+            <Form.Check
+              type={"checkbox"}
+              id={`default-checkbox`}
+              label={`Featured Vehicle`}
+              defaultChecked={props.vehicle.is_featured}
+              onChange={(e) => setIsFeatured(e.target.checked)}
+            />
+          </Form.Group>
 
           {/* <Form.Group className="mb-3" controlId="formGridState">
             <Form.Label>Current Image</Form.Label>

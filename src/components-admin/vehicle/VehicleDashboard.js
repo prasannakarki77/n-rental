@@ -22,6 +22,7 @@ const VehicleDashboard = () => {
   const [imageUpdate, setImageUpdate] = useState(false);
   const [vehicleList, setVehicleList] = useState([]);
   const [vehicle, setVehicle] = useState([]);
+  const [categoryList, setCategoryList] = useState([]);
 
   const config = {
     headers: {
@@ -30,10 +31,20 @@ const VehicleDashboard = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:90/vehicle/dashboard", config)
+      .get("http://localhost:90/vehicle/get", config)
       .then((res) => {
         setVehicleList(res.data.data);
         console.log(vehicleList);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+
+    axios
+      .get("http://localhost:90/category/get", config)
+      .then((res) => {
+        setCategoryList(res.data.data);
+        console.log(categoryList);
       })
       .catch((e) => {
         console.log(e);
@@ -64,22 +75,26 @@ const VehicleDashboard = () => {
             <AddVehicleForm
               show={addForm}
               onHide={() => setAddFormShow(false)}
+              categoryList={categoryList}
             />
 
             <UpdateVehicleForm
               show={updateForm}
               onHide={() => setUpdateFormShow(false)}
               vehicle={vehicle}
+              categoryList={categoryList}
             />
             <DeleteVehicle
               show={deletePopup}
               onHide={() => setDeletePopUp(false)}
               vehicle={vehicle}
+              categoryList={categoryList}
             />
             <UpdateVehicleImage
               show={imageUpdate}
               onHide={() => setImageUpdate(false)}
               vehicle={vehicle}
+              categoryList={categoryList}
             />
 
             <button type="button" className=" ms-2 btn btn-danger">
@@ -94,6 +109,8 @@ const VehicleDashboard = () => {
                 <th scope="col">Category</th>
                 <th scope="col">Brand</th>
                 <th scope="col">Description</th>
+                <th scope="col">Rich Description</th>
+                <th scope="col">Featured</th>
                 <th scope="col">Booking Cost</th>
                 <th scope="col">SKU</th>
                 <th scope="col">Image</th>
@@ -108,6 +125,8 @@ const VehicleDashboard = () => {
                   <td>{vehicle.vehicle_category}</td>
                   <td>{vehicle.vehicle_company}</td>
                   <td>{vehicle.vehicle_desc}</td>
+                  <td>{vehicle.vehicle_rich_desc}</td>
+                  <td>{`${vehicle.is_featured}`}</td>
                   <td>{vehicle.booking_cost}</td>
                   <td>{vehicle.vehicle_sku}</td>
                   <td>

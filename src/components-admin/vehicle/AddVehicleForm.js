@@ -11,6 +11,8 @@ function AddVehicleForm(props) {
   const [category, setCategory] = useState("");
   const [company, setCompany] = useState("");
   const [description, setDescription] = useState("");
+  const [richDescription, setRichDescription] = useState("");
+  const [isFeatured, setIsFeatured] = useState(false);
   const [cost, setCost] = useState("");
   const [sku, setSku] = useState("");
   const [image, setImage] = useState("");
@@ -31,6 +33,8 @@ function AddVehicleForm(props) {
     data.append("vehicle_category", category);
     data.append("vehicle_company", company);
     data.append("vehicle_desc", description);
+    data.append("vehicle_rich_desc", richDescription);
+    data.append("is_featured", isFeatured);
     data.append("booking_cost", cost);
     data.append("vehicle_sku", sku);
     data.append("v_img", image);
@@ -78,7 +82,7 @@ function AddVehicleForm(props) {
             />
           </Form.Group>
           <Row className="mb-3">
-            <Form.Group as={Col} controlId="formGridEmail">
+            {/* <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label>Category</Form.Label>
               <Form.Control
                 placeholder="Enter category"
@@ -86,6 +90,22 @@ function AddVehicleForm(props) {
                   setCategory(e.target.value);
                 }}
               />
+            </Form.Group> */}
+            <Form.Group as={Col} controlId="formGridCategory">
+              <Form.Label>Category</Form.Label>
+              <Form.Select
+                aria-label="Default select example"
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                }}
+              >
+                <option>Select category</option>
+                {props.categoryList.map((data) => (
+                  <option value={`${data.category_name}`}>
+                    {data.category_name}
+                  </option>
+                ))}
+              </Form.Select>
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridPassword">
@@ -104,9 +124,20 @@ function AddVehicleForm(props) {
             <Form.Control
               placeholder="Enter description"
               as="textarea"
-              rows={3}
+              rows={2}
               onChange={(e) => {
                 setDescription(e.target.value);
+              }}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Rich Description</Form.Label>
+            <Form.Control
+              placeholder="Enter rich description"
+              as="textarea"
+              rows={4}
+              onChange={(e) => {
+                setRichDescription(e.target.value);
               }}
             />
           </Form.Group>
@@ -139,6 +170,15 @@ function AddVehicleForm(props) {
               onChange={(e) => {
                 setImage(e.target.files[0]);
               }}
+            />
+          </Form.Group>
+          <Form.Group controlId="formFile" className="mb-3">
+            <Form.Check
+              type={"checkbox"}
+              id={`default-checkbox`}
+              label={`Featured Vehicle`}
+              checked={isFeatured}
+              onChange={(e) => setIsFeatured(e.target.checked)}
             />
           </Form.Group>
           <Button variant="primary" type="submit" onClick={insertVehicle}>
