@@ -101,74 +101,76 @@ const VehicleDashboard = () => {
               <FaTrashAlt /> Delete All
             </button>
           </div>
-          <table className="table mt-3 ">
-            <thead className="thead-dark bg-dark text-white">
-              <tr>
-                <th scope="col">S.No</th>
-                <th scope="col">Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">Brand</th>
-                <th scope="col">Description</th>
-                <th scope="col">Rich Description</th>
-                <th scope="col">Featured</th>
-                <th scope="col">Booking Cost</th>
-                <th scope="col">SKU</th>
-                <th scope="col">Image</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {vehicleList.map((vehicle) => (
-                <tr key={vehicle._id}>
-                  <th scope="row">{vehicleList.indexOf(vehicle) + 1}</th>
-                  <td>{vehicle.vehicle_name}</td>
-                  <td>{vehicle.vehicle_category}</td>
-                  <td>{vehicle.vehicle_company}</td>
-                  <td>{vehicle.vehicle_desc}</td>
-                  <td>{vehicle.vehicle_rich_desc}</td>
-                  <td>{`${vehicle.is_featured}`}</td>
-                  <td>{vehicle.booking_cost}</td>
-                  <td>{vehicle.vehicle_sku}</td>
-                  <td>
-                    <div className="table-image">
-                      <img
-                        src={`http://localhost:90/${vehicle.vehicle_image}`}
-                        alt="vehicle"
-                        height={100}
-                        width={200}
-                      />
-                      <button
-                        type="button"
-                        className="btn action-btns btn-success table-image__btn btn-sm m-1"
-                        onClick={() => imageUpdateHandler(vehicle)}
-                      >
-                        <MdAddPhotoAlternate />
-                      </button>
-                    </div>
-                  </td>
-
-                  <td className="action-btns ">
-                    <button
-                      type="button"
-                      className="btn btn-primary btn-sm m-1"
-                      onClick={() => updateHandler(vehicle)}
-                    >
-                      <BsFillPenFill />
-                    </button>
-                    <Link to="">
-                      <button
-                        type="button"
-                        className=" btn btn-danger btn-sm m-1"
-                        onClick={() => deleteHandler(vehicle)}
-                      >
-                        <FaTrashAlt />
-                      </button>
-                    </Link>
-                  </td>
+          <div className="table-responsive">
+            <table className="table mt-3">
+              <thead className="thead-dark bg-dark text-white">
+                <tr>
+                  <th scope="col">S.No</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Brand</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Rich Description</th>
+                  <th scope="col">Featured</th>
+                  <th scope="col">Booking Cost</th>
+                  <th scope="col">SKU</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {vehicleList.map((vehicle) => (
+                  <tr key={vehicle._id}>
+                    <th scope="row">{vehicleList.indexOf(vehicle) + 1}</th>
+                    <td>{vehicle.vehicle_name}</td>
+                    <td>{vehicle.vehicle_category}</td>
+                    <td>{vehicle.vehicle_company}</td>
+                    <td>{vehicle.vehicle_desc}</td>
+                    <td>{vehicle.vehicle_rich_desc}</td>
+                    <td>{`${vehicle.is_featured}`}</td>
+                    <td>{vehicle.booking_cost}</td>
+                    <td>{vehicle.vehicle_sku}</td>
+                    <td>
+                      <div className="table-image">
+                        <img
+                          src={`http://localhost:90/${vehicle.vehicle_image}`}
+                          alt="vehicle"
+                          height={100}
+                          width={200}
+                        />
+                        <button
+                          type="button"
+                          className="btn action-btns btn-success table-image__btn btn-sm m-1"
+                          onClick={() => imageUpdateHandler(vehicle)}
+                        >
+                          <MdAddPhotoAlternate />
+                        </button>
+                      </div>
+                    </td>
+
+                    <td className="action-btns ">
+                      <button
+                        type="button"
+                        className="btn btn-primary btn-sm m-1"
+                        onClick={() => updateHandler(vehicle)}
+                      >
+                        <BsFillPenFill />
+                      </button>
+                      <Link to="">
+                        <button
+                          type="button"
+                          className=" btn btn-danger btn-sm m-1"
+                          onClick={() => deleteHandler(vehicle)}
+                        >
+                          <FaTrashAlt />
+                        </button>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>

@@ -5,6 +5,7 @@ import bike_red from "../images/bike-red.png";
 import bus_red from "../images/bus-red.png";
 import van_red from "../images/van-red.png";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 const Vehicle = () => {
   const [vehicleList, setVehicleList] = useState([]);
@@ -72,7 +73,9 @@ const Vehicle = () => {
                 </span>
                 / day
               </div>
-              <button className="vehicle-card__btn">Book now</button>
+              <Link to="/vehicle_page">
+                <button className="vehicle-card__btn">Book now</button>
+              </Link>
             </div>
           ))}
         </div>

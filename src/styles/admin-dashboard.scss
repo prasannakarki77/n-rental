@@ -1,6 +1,7 @@
 @import "./variables.scss";
 .dashboard-container {
   display: flex;
+  min-width: 500px;
 }
 
 .dashboard-content {

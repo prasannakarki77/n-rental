@@ -15,6 +15,11 @@ const Header = () => {
     setOpenMenu((p) => !p);
   };
 
+  const logout = () => {
+    localStorage.clear();
+    window.location.replace("/login");
+  };
+
   return (
     <>
       <div className="header">
@@ -51,9 +56,19 @@ const Header = () => {
             <Link to="/blog" className="nav__item">
               Blogs
             </Link>
-            <Link className="" aria-current="page" to="/login">
-              <button className="nav__btn">Sign In</button>
-            </Link>
+            {localStorage.getItem("userToken") ? (
+              <>
+                <Link className="" aria-current="page" to="/login">
+                  <button className="nav__btn" onClick={logout}>
+                    Log Out
+                  </button>
+                </Link>
+              </>
+            ) : (
+              <Link className="" aria-current="page" to="/login">
+                <button className="nav__btn">Sign In</button>
+              </Link>
+            )}
           </div>
         </nav>
       </div>

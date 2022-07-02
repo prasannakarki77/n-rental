@@ -82,15 +82,6 @@ function AddVehicleForm(props) {
             />
           </Form.Group>
           <Row className="mb-3">
-            {/* <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Category</Form.Label>
-              <Form.Control
-                placeholder="Enter category"
-                onChange={(e) => {
-                  setCategory(e.target.value);
-                }}
-              />
-            </Form.Group> */}
             <Form.Group as={Col} controlId="formGridCategory">
               <Form.Label>Category</Form.Label>
               <Form.Select

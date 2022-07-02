@@ -20,6 +20,11 @@ const Dashboard = () => {
       });
   }, []);
 
+  const logout = () => {
+    localStorage.clear();
+    window.location.replace("/login");
+  };
+
   return (
     <>
       <div className="dashboard-content">
@@ -30,6 +35,10 @@ const Dashboard = () => {
               <p>Username: {details.username} </p>
               <p>Phone: {details.phone}</p>
               <p>Email: {details.email}</p>
+              <button onClick={logout} className="btn btn-primary">
+                {" "}
+                Logout
+              </button>
             </div>
           </div>
         </div>
