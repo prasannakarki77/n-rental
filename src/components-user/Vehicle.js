@@ -7,6 +7,7 @@ import van_red from "../images/van-red.png";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { BsFillBookmarkFill } from "react-icons/bs";
 const Vehicle = () => {
   const [vehicleList, setVehicleList] = useState([]);
   const config = {
@@ -58,12 +59,13 @@ const Vehicle = () => {
       <section className="featured">
         <div className="featured__vehicles">
           {vehicleList.map((vehicle) => (
-            <div className="vehicle-card">
+            <div className="vehicle-card" key={vehicle._id}>
               <div className="vehicle-card__img">
                 <img
                   src={`http://localhost:90/${vehicle.vehicle_image}`}
                   alt="vehicle"
                 />
+                <BsFillBookmarkFill className="bookmark" />
               </div>
               <div className="vehicle-card__name">{vehicle.vehicle_name}</div>
               <div className="vehicle-card__desc">{vehicle.vehicle_desc}</div>
@@ -73,7 +75,7 @@ const Vehicle = () => {
                 </span>
                 / day
               </div>
-              <Link to="/vehicle_page">
+              <Link to={"/vehicle/" + vehicle._id}>
                 <button className="vehicle-card__btn">Book now</button>
               </Link>
             </div>
