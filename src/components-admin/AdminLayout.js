@@ -3,14 +3,15 @@ import PrivateRoute from "../components/ProtectedRoute";
 import ArticleDashboard from "./article/ArticleDashboard";
 
 import CategoryDashboard from "./category/CategoryDashboard";
-import AddVehicle from "./Dashboard";
+import Profile from "./Profile";
+
 import VehicleDashboard from "./vehicle/VehicleDashboard";
 
 const AdminLayout = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<AddVehicle />} />
+        <Route path="/" element={<Profile />} />
         <Route path="/private" element={<PrivateRoute />} />
         <Route
           path="/category"

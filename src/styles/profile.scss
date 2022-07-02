@@ -1,0 +1,52 @@
+@import "./variables";
+
+.profile {
+  max-width: 1250px;
+  margin: 40px auto;
+  display: grid;
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  &__image {
+    position: relative;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+    svg {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      color: $color-green;
+    }
+  }
+  &__detail {
+    &--label {
+      color: rgb(172, 132, 20);
+      font-weight: 500;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+    &--value {
+      padding: 10px 15px;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      outline: none;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      color: $color-grey;
+      box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+        rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    }
+  }
+  &__btn {
+    width: 100%;
+    margin: 10px 0;
+  }
+}

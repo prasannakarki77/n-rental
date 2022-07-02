@@ -178,7 +178,7 @@ const Header = () => {
                   </button>
                 </Link> */}
                   <div className="user-dropdown">
-                    <Link to="#" className="user">
+                    <Link to="/profile" className="user">
                       <img
                         src="https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png"
                         alt="user"

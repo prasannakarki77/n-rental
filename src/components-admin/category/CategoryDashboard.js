@@ -82,65 +82,67 @@ const CategoryDashboard = () => {
               <FaTrashAlt /> Delete All
             </button>
           </div>
-          <table className="table mt-3 ">
-            <thead className="thead-dark bg-dark text-white">
-              <tr>
-                <th scope="col">S.No.</th>
-                <th scope="col">Category Name</th>
+          <div className="table-responsive">
+            <table className="table mt-3 ">
+              <thead className="thead-dark bg-dark text-white">
+                <tr>
+                  <th scope="col">S.No.</th>
+                  <th scope="col">Category Name</th>
 
-                <th scope="col">Description</th>
+                  <th scope="col">Description</th>
 
-                <th scope="col">Image</th>
+                  <th scope="col">Image</th>
 
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {categoryList.map((category) => (
-                <tr key={category._id}>
-                  <th scope="row">{categoryList.indexOf(category) + 1}</th>
-                  <td>{category.category_name}</td>
-                  <td>{category.category_desc}</td>
-                  <td>
-                    <div className="table-image">
-                      <img
-                        src={`http://localhost:90/${category.category_image}`}
-                        alt="category"
-                        height={100}
-                        width={200}
-                      />
-                      <button
-                        type="button"
-                        className="btn action-btns btn-success table-image__btn btn-sm m-1"
-                        onClick={() => updateCategoryImageHandler(category)}
-                      >
-                        <MdAddPhotoAlternate />
-                      </button>
-                    </div>
-                  </td>
-
-                  <td className="action-btns ">
-                    <button
-                      type="button"
-                      className="btn btn-primary btn-sm m-1"
-                      onClick={() => updateCategoryHandler(category)}
-                    >
-                      <BsFillPenFill />
-                    </button>
-                    <Link to="">
-                      <button
-                        type="button"
-                        className=" btn btn-danger btn-sm m-1"
-                        onClick={() => deleteCategoryHandler(category)}
-                      >
-                        <FaTrashAlt />
-                      </button>
-                    </Link>
-                  </td>
+                  <th scope="col">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {categoryList.map((category) => (
+                  <tr key={category._id}>
+                    <th scope="row">{categoryList.indexOf(category) + 1}</th>
+                    <td>{category.category_name}</td>
+                    <td>{category.category_desc}</td>
+                    <td>
+                      <div className="table-image">
+                        <img
+                          src={`http://localhost:90/${category.category_image}`}
+                          alt="category"
+                          height={100}
+                          width={200}
+                        />
+                        <button
+                          type="button"
+                          className="btn action-btns btn-success table-image__btn btn-sm m-1"
+                          onClick={() => updateCategoryImageHandler(category)}
+                        >
+                          <MdAddPhotoAlternate />
+                        </button>
+                      </div>
+                    </td>
+
+                    <td className="action-btns ">
+                      <button
+                        type="button"
+                        className="btn btn-primary btn-sm m-1"
+                        onClick={() => updateCategoryHandler(category)}
+                      >
+                        <BsFillPenFill />
+                      </button>
+                      <Link to="">
+                        <button
+                          type="button"
+                          className=" btn btn-danger btn-sm m-1"
+                          onClick={() => deleteCategoryHandler(category)}
+                        >
+                          <FaTrashAlt />
+                        </button>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>

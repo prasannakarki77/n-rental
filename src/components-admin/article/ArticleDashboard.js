@@ -78,68 +78,70 @@ const ArticleDashboard = () => {
               <FaTrashAlt /> Delete All
             </button>
           </div>
-          <table className="table mt-3 ">
-            <thead className="thead-dark bg-dark text-white">
-              <tr>
-                <th scope="col">S.No.</th>
-                <th scope="col">Title</th>
-                <th scope="col">Publish Date</th>
-                <th scope="col">Description</th>
-                <th scope="col">Rich Description</th>
-                <th scope="col">Image</th>
-                <th scope="col">Featured</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {articleList.map((article) => (
-                <tr key={article._id}>
-                  <th scope="row">{articleList.indexOf(article) + 1}</th>
-                  <td>{article.title}</td>
-                  <td>{article.date}</td>
-                  <td>{article.description}</td>
-                  <td>{article.rich_description}</td>
-                  <td>
-                    <div className="table-image">
-                      <img
-                        src={`http://localhost:90/${article.image}`}
-                        alt="vehicle"
-                        height={100}
-                        width={200}
-                      />
-                      <button
-                        type="button"
-                        className="btn action-btns btn-success table-image__btn btn-sm m-1"
-                        onClick={() => updateArticleImageHandler(article)}
-                      >
-                        <MdAddPhotoAlternate />
-                      </button>
-                    </div>
-                  </td>
-                  <td>{`${article.is_featured}`}</td>
-
-                  <td className="action-btns ">
-                    <button
-                      type="button"
-                      className="btn btn-primary btn-sm m-1"
-                      onClick={() => updateArticleHandler(article)}
-                    >
-                      <BsFillPenFill />
-                    </button>
-                    <Link to="">
-                      <button
-                        type="button"
-                        className=" btn btn-danger btn-sm m-1"
-                        onClick={() => deleteArticleHandler(article)}
-                      >
-                        <FaTrashAlt />
-                      </button>
-                    </Link>
-                  </td>
+          <div className="table-responsive">
+            <table className="table mt-3">
+              <thead className="thead-dark bg-dark text-white">
+                <tr>
+                  <th scope="col">S.No.</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Publish Date</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Rich Description</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Featured</th>
+                  <th scope="col">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {articleList.map((article) => (
+                  <tr key={article._id}>
+                    <th scope="row">{articleList.indexOf(article) + 1}</th>
+                    <td>{article.title}</td>
+                    <td>{article.date}</td>
+                    <td>{article.description}</td>
+                    <td>{article.rich_description}</td>
+                    <td>
+                      <div className="table-image">
+                        <img
+                          src={`http://localhost:90/${article.image}`}
+                          alt="vehicle"
+                          height={100}
+                          width={200}
+                        />
+                        <button
+                          type="button"
+                          className="btn action-btns btn-success table-image__btn btn-sm m-1"
+                          onClick={() => updateArticleImageHandler(article)}
+                        >
+                          <MdAddPhotoAlternate />
+                        </button>
+                      </div>
+                    </td>
+                    <td>{`${article.is_featured}`}</td>
+
+                    <td className="action-btns ">
+                      <button
+                        type="button"
+                        className="btn btn-primary btn-sm m-1"
+                        onClick={() => updateArticleHandler(article)}
+                      >
+                        <BsFillPenFill />
+                      </button>
+                      <Link to="">
+                        <button
+                          type="button"
+                          className=" btn btn-danger btn-sm m-1"
+                          onClick={() => deleteArticleHandler(article)}
+                        >
+                          <FaTrashAlt />
+                        </button>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>
