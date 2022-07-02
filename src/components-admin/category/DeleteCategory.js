@@ -17,7 +17,7 @@ function DeleteCategory(props) {
       .delete(`http://localhost:90/category/delete/${id}`, config)
       .then((res) => {
         if (res.data.success === true) {
-          window.location.replace("/category");
+          window.location.replace("/category_dashboard");
           console.log("Category Deleted Successfully");
         } else {
           console.log("Please Try Again! Something Went Wrong!!!");

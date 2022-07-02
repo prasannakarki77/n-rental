@@ -79,7 +79,7 @@ function UpdateVehicleForm(props) {
       .put("http://localhost:90/vehicle/update", data, config)
       .then((res) => {
         if (res.data.success === true) {
-          window.location.replace("/vehicle");
+          window.location.replace("/vehicle_dashboard");
           console.log("Vehicle Updated Successfully");
         } else {
           console.log("Please Try Again! Something Went Wrong!!!");

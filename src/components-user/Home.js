@@ -1,6 +1,7 @@
 import { BiSearchAlt } from "react-icons/bi";
 import { FaChevronCircleRight } from "react-icons/fa";
-import { BsFillCaretRightFill } from "react-icons/bs";
+import { BsFillCaretRightFill, BsFillBookmarkFill } from "react-icons/bs";
+
 import { FaMapMarkedAlt } from "react-icons/fa";
 import "./../styles/home.scss";
 import car_drive from "../images/car-drive.png";
@@ -58,12 +59,13 @@ const Home = () => {
           {vehicleList.map((vehicle) => {
             if (vehicle.is_featured) {
               return (
-                <div className="vehicle-card">
+                <div className="vehicle-card " key={vehicle._id}>
                   <div className="vehicle-card__img">
                     <img
                       src={`http://localhost:90/${vehicle.vehicle_image}`}
                       alt="vehicle"
                     />
+                    <BsFillBookmarkFill className="bookmark" />
                   </div>
                   <div className="vehicle-card__name">
                     {vehicle.vehicle_name}
@@ -77,7 +79,9 @@ const Home = () => {
                     </span>
                     / day
                   </div>
-                  <button className="vehicle-card__btn">Book now</button>
+                  <Link to={"/vehicle/" + vehicle._id}>
+                    <button className="vehicle-card__btn">Book now</button>
+                  </Link>
                 </div>
               );
             }
@@ -155,9 +159,11 @@ const Home = () => {
                     <div className="blog__title">{article.title}</div>
                     <div className="blog__desc">{article.description}</div>
                     <div className="blog__date">{article.date}</div>
-                    <button className="blog__read-more-btn">
-                      Read more <FaChevronCircleRight />
-                    </button>
+                    <Link to={"/article/single/" + article._id}>
+                      <button className="blog__read-more-btn">
+                        Read more <FaChevronCircleRight />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               );

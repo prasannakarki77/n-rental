@@ -18,7 +18,7 @@ const DeleteVehicle = (props) => {
       .delete(`http://localhost:90/vehicle/delete/${id}`, config)
       .then((res) => {
         if (res.data.success === true) {
-          window.location.replace("/vehicle");
+          window.location.replace("/vehicle_dashboard");
           console.log("Vehicle Deleted Successfully");
         } else {
           console.log("Please Try Again! Something Went Wrong!!!");

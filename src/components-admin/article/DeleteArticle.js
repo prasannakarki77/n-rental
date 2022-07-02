@@ -19,7 +19,7 @@ function DeleteArticle(props) {
       .delete(`http://localhost:90/article/delete/${id}`, config)
       .then((res) => {
         if (res.data.success === true) {
-          window.location.replace("./article");
+          window.location.replace("/article_dashboard");
           console.log("Article Deleted Successfully");
         } else {
           console.log("Please Try Again! Something Went Wrong!!!");

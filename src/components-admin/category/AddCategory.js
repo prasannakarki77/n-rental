@@ -25,7 +25,7 @@ function AddCategory(props) {
       .then((res) => {
         if (res.data.success === true) {
           console.log("Category Added Successfully");
-          window.location.replace("/category");
+          window.location.replace("/category_dashboard");
         } else {
           console.log("Please Try Again! Something Went Wrong!!!");
         }

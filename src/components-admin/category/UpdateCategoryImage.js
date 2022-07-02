@@ -25,7 +25,7 @@ function UpdateCategoryImage(props) {
       .put("http://localhost:90/category/update_image", data, config)
       .then((res) => {
         if (res.data.success === true) {
-          window.location.replace("/category");
+          window.location.replace("/category_dashboard");
           console.log("Vehicle Image Updated Successfully");
         } else {
           console.log("Please Try Again! Something Went Wrong!!!");

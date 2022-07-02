@@ -25,7 +25,7 @@ function UpdateArticleImage(props) {
       .put("http://localhost:90/article/update_image", data, config)
       .then((res) => {
         if (res.data.success === true) {
-          window.location.replace("/article");
+          window.location.replace("/article_dashboard");
           console.log("Vehicle Image Updated Successfully");
         } else {
           console.log("Please Try Again! Something Went Wrong!!!");

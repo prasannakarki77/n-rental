@@ -9,9 +9,12 @@
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   &__image {
+    position: relative;
     img {
       width: 100%;
       object-fit: contain;
+    }
+    svg {
     }
   }
   &__details {

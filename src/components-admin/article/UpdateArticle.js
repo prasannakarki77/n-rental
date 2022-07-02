@@ -49,7 +49,7 @@ function UpdateArticle(props) {
       .put("http://localhost:90/article/update", data, config)
       .then((res) => {
         if (res.data.success === true) {
-          window.location.replace("/article");
+          window.location.replace("/article_dashboard");
           console.log("Article Updated Successfully");
         } else {
           console.log("Please Try Again! Something Went Wrong!!!");
