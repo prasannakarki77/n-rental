@@ -12,3 +12,20 @@
     display: none;
   }
 }
+
+@keyframes displayMenu {
+  0% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+@keyframes closeMenu {
+  0% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+  }
+}

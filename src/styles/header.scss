@@ -1,5 +1,5 @@
 @import "./variables.scss";
-
+@import "./animation.scss";
 .header {
   background: $color-light;
   position: sticky;
@@ -285,4 +285,33 @@
   &--close {
     visibility: hidden;
   }
+}
+
+.user-dropdown {
+  position: relative;
+}
+
+.user-menu {
+  position: absolute;
+  bottom: -125px;
+  padding: 10px;
+  z-index: 100;
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  box-shadow: rgb(9 30 66 / 25%) 0px 4px 8px -2px, rgb(9 30 66 / 8%) 0px 0px 0px;
+  background-color: $color-light;
+  border-radius: 13px;
+  visibility: hidden;
+  transition: all 0.3s;
+  &__option {
+  }
+  // &--active {
+  //   visibility: visible;
+  //   animation: displayMenu 0.1s;
+  // }
+  // &--inactive {
+  //   visibility: hidden;
+  //   animation: closeMenu 0.1s;
+  // }
 }
