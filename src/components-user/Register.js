@@ -6,13 +6,14 @@ import { FaUserAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { BsTelephoneFill } from "react-icons/bs";
 import { FaKey } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
 
   const registerUser = (e) => {
     e.preventDefault();
@@ -26,9 +27,9 @@ const Register = () => {
       .post("http://localhost:90/user/register", data)
       .then((res) => {
         if (res.data.msg === "Registered") {
-          setMessage("Registered Succefully");
+          toast.success("Registered Succefully");
         } else {
-          setMessage("Registration Failed!! Try again");
+          toast.error("Registration Failed!! Try again");
         }
       })
       .catch();
@@ -36,8 +37,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="register-container">
-        <h1 className="register-message">{message}</h1>
+      <div className="register-container mt-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"

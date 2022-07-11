@@ -25,6 +25,8 @@ const Header = () => {
   //   setActiveNav((p) => !p);
   // };
   const [userDetails, setUserDetails] = useState("");
+  const [userMenuState, setUserMenuState] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -42,8 +44,6 @@ const Header = () => {
       });
   }, []);
 
-  const [openMenu, setOpenMenu] = useState(false);
-
   const menuClickHandler = (e) => {
     e.preventDefault();
     setOpenMenu((p) => !p);
@@ -57,6 +57,11 @@ const Header = () => {
   const sidemenuClickHandler = (e) => {
     e.preventDefault();
     setmenuState((p) => !p);
+  };
+
+  const userMenuStateHandler = (e) => {
+    e.preventDefault();
+    setUserMenuState((p) => !p);
   };
   return (
     <>
@@ -73,7 +78,7 @@ const Header = () => {
               <FiMenu />
             </div>
             <div className="user-dropdown">
-              <Link to="#" className="user">
+              <Link to="/admin_dashboard" className="user">
                 <img
                   src="https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png"
                   alt="user"
@@ -177,7 +182,23 @@ const Header = () => {
                     Log Out
                   </button>
                 </Link> */}
-                  <div className="user-dropdown">
+                  <div
+                    className="user-dropdown"
+                    onMouseEnter={userMenuStateHandler}
+                    onMouseLeave={userMenuStateHandler}
+                  >
+                    <div
+                      className={`user-menu ${
+                        userMenuState
+                          ? "user-menu--active"
+                          : "user-menu--inactive"
+                      }`}
+                    >
+                      <div className="user-menu__option">Profile</div>
+                      <div className="user-menu__option">Favourites</div>
+                      <div className="user-menu__option">Bookings</div>
+                      <div className="user-menu__option">Logout</div>
+                    </div>
                     <Link to="/profile" className="user">
                       <img
                         src="https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png"

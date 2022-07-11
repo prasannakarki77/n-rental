@@ -4,6 +4,8 @@ import "../styles/login.scss";
 import { Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import { FaKey } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -27,9 +29,13 @@ const Login = () => {
           localStorage.setItem("userToken", res.data.token);
           localStorage.setItem("userType", res.data.userType);
           // redirect to the any page url
-          window.location.replace("./dashboard");
+          if (localStorage.getItem("userType", "admin")) {
+            window.location.replace("/admin_dashboard");
+          } else {
+            window.location.replace("/");
+          }
         } else {
-          setMessage("Invalid login credentials");
+          toast.error("Invalid credentials!! Try again.");
         }
       })
       .catch((e) => {
