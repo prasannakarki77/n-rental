@@ -56,90 +56,100 @@ const Bookings = () => {
           </span>
         </div>
         <div className="booking-container">
-          {bookings.map((booking) => {
-            if (booking != null) {
-              return (
-                <div className="booking">
-                  <div className="booking__img">
-                    <img
-                      src={
-                        "http://localhost:90/" +
-                        booking.vehicle_id.vehicle_image
-                      }
-                      alt="booking_image"
-                    />
-                  </div>
-                  <div className="booking__detail">
-                    <div className="booking__detail--vehicle-name">
-                      <span className="booking__detail--title">Vehicle: </span>
-                      {booking.vehicle_id.vehicle_name}
+          {bookings.length > 0 ? (
+            bookings.map((booking) => {
+              if (booking != null) {
+                return (
+                  <div className="booking">
+                    <div className="booking__img">
+                      <img
+                        src={
+                          "http://localhost:90/" +
+                          booking.vehicle_id.vehicle_image
+                        }
+                        alt="booking_image"
+                      />
                     </div>
-                    <div className="booking__detail--vehicle-desc">
-                      <span className="booking__detail--title">
-                        Description: <br />
-                      </span>
-                      {booking.vehicle_id.vehicle_desc}
-                    </div>
-                    <div className="booking__detail--vehicle-cost">
-                      <span className="booking__detail--title">
-                        Booking Cost:{" "}
-                      </span>{" "}
-                      <span>Rs {booking.vehicle_id.booking_cost}</span>/day
-                    </div>
-                    <div className="booking__detail--days">
-                      <span className="booking__detail--title">
-                        No of Days:{" "}
-                      </span>
-                      {booking.no_of_days}2
-                    </div>
-                    <div className="booking__detail--date">
-                      <span className="booking__detail--title">
-                        Date and Time:{" "}
-                      </span>
-                      <span>
-                        {booking.booking_date}, {booking.booking_time}
-                      </span>
-                    </div>
-                    <div className="booking__detail--contact">
-                      <span className="booking__detail--title">
-                        Contact No:{" "}
-                      </span>
-                      <span>{booking.contact_no}</span>
-                    </div>
-                    <div className="booking__detail--address">
-                      <span className="booking__detail--title">Address: </span>
-                      {booking.address}
-                    </div>
-                    <div className="booking__detail--status">
-                      <span className="booking__detail--title">Status: </span>
-                      {booking.status}
-                    </div>
-                    <div className="booking__detail--btns">
-                      <div>
-                        {" "}
-                        <button
-                          className="booking__add-review"
-                          onClick={() => reviewHandler(booking.vehicle_id._id)}
-                        >
-                          Add Review <FaPenAlt />
-                        </button>
+                    <div className="booking__detail">
+                      <div className="booking__detail--vehicle-name">
+                        <span className="booking__detail--title">
+                          Vehicle:{" "}
+                        </span>
+                        {booking.vehicle_id.vehicle_name}
                       </div>
-                      <div>
-                        <button
-                          className="booking__cancel-btn"
-                          onClick={() => deleteHandler(booking)}
-                        >
-                          Cancel Booking <FcCancel />
-                        </button>
+                      <div className="booking__detail--vehicle-desc">
+                        <span className="booking__detail--title">
+                          Description: <br />
+                        </span>
+                        {booking.vehicle_id.vehicle_desc}
+                      </div>
+                      <div className="booking__detail--vehicle-cost">
+                        <span className="booking__detail--title">
+                          Booking Cost:{" "}
+                        </span>{" "}
+                        <span>Rs {booking.vehicle_id.booking_cost}</span>/day
+                      </div>
+                      <div className="booking__detail--days">
+                        <span className="booking__detail--title">
+                          No of Days:{" "}
+                        </span>
+                        {booking.no_of_days}2
+                      </div>
+                      <div className="booking__detail--date">
+                        <span className="booking__detail--title">
+                          Date and Time:{" "}
+                        </span>
+                        <span>
+                          {booking.booking_date}, {booking.booking_time}
+                        </span>
+                      </div>
+                      <div className="booking__detail--contact">
+                        <span className="booking__detail--title">
+                          Contact No:{" "}
+                        </span>
+                        <span>{booking.contact_no}</span>
+                      </div>
+                      <div className="booking__detail--address">
+                        <span className="booking__detail--title">
+                          Address:{" "}
+                        </span>
+                        {booking.address}
+                      </div>
+                      <div className="booking__detail--status">
+                        <span className="booking__detail--title">Status: </span>
+                        {booking.status}
+                      </div>
+                      <div className="booking__detail--btns">
+                        <div>
+                          {" "}
+                          <button
+                            className="booking__add-review"
+                            onClick={() =>
+                              reviewHandler(booking.vehicle_id._id)
+                            }
+                          >
+                            Add Review <FaPenAlt />
+                          </button>
+                        </div>
+                        <div>
+                          <button
+                            className="booking__cancel-btn"
+                            onClick={() => deleteHandler(booking)}
+                          >
+                            Cancel Booking <FcCancel />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            } else {
-              return <p>No data</p>;
-            }
-          })}
+                );
+              } else {
+                return <p>No data</p>;
+              }
+            })
+          ) : (
+            <p className="text-center">No any Bookings</p>
+          )}
         </div>
       </div>
     </>

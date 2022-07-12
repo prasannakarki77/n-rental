@@ -53,3 +53,52 @@
     }
   }
 }
+
+.reviews-container {
+  max-width: 1200px;
+  margin: 150px auto;
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-green;
+    margin-bottom: 60px;
+  }
+}
+
+.review {
+  position: relative;
+  margin-bottom: 50px;
+  &__user {
+    display: flex;
+    font-weight: 600;
+    align-items: center;
+    margin-bottom: 20px;
+    &--image {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+  }
+
+  &__rating {
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+    svg {
+      margin-left: 5px;
+      color: $color-primary;
+    }
+  }
+  &__text {
+    display: inline-block;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 8px;
+    padding: 20px;
+  }
+}
