@@ -22,14 +22,15 @@ const Login = () => {
       .post("http://localhost:90/user/login", data)
       .then((res) => {
         console.log(res.data.token);
-        console.log(res.data);
+        console.log(res.data.userType);
         if (res.data.token) {
           // it will save the token locally, so that it
           // is available all over the component
           localStorage.setItem("userToken", res.data.token);
           localStorage.setItem("userType", res.data.userType);
           // redirect to the any page url
-          if (localStorage.getItem("userType", "admin")) {
+          console.log(localStorage.getItem("userType"));
+          if (localStorage.getItem("userType") === "admin") {
             window.location.replace("/admin_dashboard");
           } else {
             window.location.replace("/");

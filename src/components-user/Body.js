@@ -15,6 +15,8 @@ import CategoryDashboard from "../components-admin/category/CategoryDashboard";
 import VehicleDashboard from "../components-admin/vehicle/VehicleDashboard";
 import ArticleDashboard from "../components-admin/article/ArticleDashboard";
 import Profile from "../components-admin/Profile";
+import AddBookingForm from "./AddBookingForm";
+import Bookings from "./Bookings";
 const Body = () => {
   return (
     <>
@@ -37,6 +39,22 @@ const Body = () => {
               element={
                 <PrivateRoute>
                   <VehiclePage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/vehicle/booking/:id"
+              element={
+                <PrivateRoute>
+                  <AddBookingForm />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/user/mybookings"
+              element={
+                <PrivateRoute>
+                  <Bookings />
                 </PrivateRoute>
               }
             />

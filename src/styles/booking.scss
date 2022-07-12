@@ -1,0 +1,105 @@
+@import "./variables.scss";
+
+.bookings {
+  padding: 60px;
+  @include breakpoint(lg) {
+    padding: 20px;
+  }
+  a {
+    text-decoration: none;
+  }
+  &__title-container {
+    text-align: center;
+  }
+  &__title {
+    margin-bottom: 60px;
+    font-size: 24px;
+    font-weight: 700;
+
+    display: flex;
+    justify-content: center;
+    &--text {
+      border-bottom: 2px solid $color-primary;
+      svg {
+        color: $color-primary;
+        margin-left: 5px;
+      }
+    }
+  }
+}
+.booking-container {
+  max-width: 1200px;
+  margin: 50px auto;
+}
+
+.booking {
+  box-shadow: 5px 9px 23px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 19px;
+  display: flex;
+  overflow: hidden;
+  margin-bottom: 60px;
+  @include breakpoint(md) {
+    flex-direction: column;
+    align-items: center;
+  }
+  &__add-review {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: auto;
+    color: #0aa8da;
+    cursor: pointer;
+    transition: all 0.3s;
+    svg {
+      margin-left: 5px;
+    }
+    &:hover {
+      transform: scale3d(1.05, 1.02, 0.3);
+    }
+  }
+  &__cancel-btn {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: auto;
+    color: red;
+    cursor: pointer;
+    transition: all 0.3s;
+    svg {
+      margin-left: 5px;
+    }
+    &:hover {
+      transform: scale3d(1.05, 1.02, 0.3);
+    }
+  }
+
+  &__img {
+    img {
+      height: 100%;
+      width: 500px;
+      object-fit: contain;
+      @include breakpoint(md) {
+        width: 100%;
+      }
+    }
+  }
+  &__detail {
+    padding: 30px 25px;
+    width: 100%;
+    font-weight: 700;
+    & > :not(:last-child) {
+      margin-bottom: 10px;
+    }
+    &--title {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    &--btns {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

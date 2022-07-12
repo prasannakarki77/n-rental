@@ -5,6 +5,7 @@ import {
   MdSpaceDashboard,
   MdSettingsSuggest,
 } from "react-icons/md";
+import user_icon from "../images/user_icon.png";
 import "./../styles/header.scss";
 import { Link, NavLink } from "react-router-dom";
 import { useEffect } from "react";
@@ -17,16 +18,20 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
 import { MdOutlineClose } from "react-icons/md";
 import "../styles/admin_nav.scss";
+import { NavDropdown } from "react-bootstrap";
 
 const Header = () => {
-  // const [activeNav, setActiveNav] = useState(false);
-  // const clicked = (e) => {
-  //   e.preventDefault();
-  //   setActiveNav((p) => !p);
-  // };
   const [userDetails, setUserDetails] = useState("");
-  const [userMenuState, setUserMenuState] = useState(false);
+
   const [openMenu, setOpenMenu] = useState(false);
+  const [show, setShow] = useState(false);
+  const showDropdown = (e) => {
+    setShow(!show);
+  };
+  const hideDropdown = (e) => {
+    setShow(false);
+  };
+
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -59,10 +64,6 @@ const Header = () => {
     setmenuState((p) => !p);
   };
 
-  const userMenuStateHandler = (e) => {
-    e.preventDefault();
-    setUserMenuState((p) => !p);
-  };
   return (
     <>
       {localStorage.getItem("userType") === "admin" ? (
@@ -88,6 +89,7 @@ const Header = () => {
                 <MdArrowDropDown />
               </Link>
             </div>
+
             <div
               className={`sidenav ${
                 menuState ? `sidenav--open` : `sidenav--close`
@@ -182,34 +184,47 @@ const Header = () => {
                     Log Out
                   </button>
                 </Link> */}
-                  <div
-                    className="user-dropdown"
-                    onMouseEnter={userMenuStateHandler}
-                    onMouseLeave={userMenuStateHandler}
-                  >
-                    <div
-                      className={`user-menu ${
-                        userMenuState
-                          ? "user-menu--active"
-                          : "user-menu--inactive"
-                      }`}
+                  <div className="user-dropdown">
+                    <NavDropdown
+                      title={
+                        <Link to="/profile" className="user">
+                          <img
+                            src={
+                              userDetails.profile_img
+                                ? `http://localhost:90/${userDetails.profile_img}`
+                                : user_icon
+                            }
+                            alt="user"
+                            className="user__image"
+                          />
+                          <span className="user__username">
+                            {userDetails.username}
+                          </span>
+                          <MdArrowDropDown />
+                        </Link>
+                      }
+                      id="collasible-nav-dropdown"
+                      show={show}
+                      onMouseEnter={showDropdown}
+                      onMouseLeave={hideDropdown}
                     >
-                      <div className="user-menu__option">Profile</div>
-                      <div className="user-menu__option">Favourites</div>
-                      <div className="user-menu__option">Bookings</div>
-                      <div className="user-menu__option">Logout</div>
-                    </div>
-                    <Link to="/profile" className="user">
-                      <img
-                        src="https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png"
-                        alt="user"
-                        className="user__image"
-                      />
-                      <span className="user__username">
-                        {userDetails.username}
-                      </span>
-                      <MdArrowDropDown />
-                    </Link>
+                      <Link to="/profile" className="user-menu__option">
+                        Profile
+                      </Link>
+                      <Link to="/profile" className="user-menu__option">
+                        Favourites
+                      </Link>
+                      <Link to="/user/mybookings" className="user-menu__option">
+                        Bookings
+                      </Link>
+                      <Link
+                        to="/login"
+                        className="user-menu__option"
+                        onClick={logout}
+                      >
+                        Logout
+                      </Link>
+                    </NavDropdown>
                   </div>
                 </>
               ) : (

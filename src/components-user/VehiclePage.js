@@ -3,9 +3,11 @@ import "../styles/vehicle_page.scss";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { BsFillBookmarkFill } from "react-icons/bs";
+import AddBookingForm from "./AddBookingForm";
 const VehiclePage = () => {
   const [vehicle, setVehicle] = useState([]);
   const [bookmarkStatus, setBookmarkStatus] = useState(false);
+  const [addForm, setAddFormShow] = useState(false);
   const { id } = useParams();
   useEffect(() => {
     axios
@@ -23,6 +25,11 @@ const VehiclePage = () => {
   };
   return (
     <div className="vehicle">
+      <AddBookingForm
+        show={addForm}
+        onHide={() => setAddFormShow(false)}
+        vehicle_id={vehicle._id}
+      />
       <>
         <div className="vehicle__image">
           <img
@@ -47,7 +54,12 @@ const VehiclePage = () => {
             / day
           </div>
 
-          <button className="vehicle__book-btn">Book now</button>
+          <button
+            className="vehicle__book-btn"
+            onClick={() => setAddFormShow(true)}
+          >
+            Book now
+          </button>
         </div>
       </>
     </div>

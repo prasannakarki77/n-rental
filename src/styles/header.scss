@@ -151,12 +151,13 @@
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    border: 1px solid black;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     object-fit: cover;
     margin-right: 5px;
   }
   svg {
-    font-size: 30px;
+    font-size: 25px;
   }
 }
 
@@ -302,16 +303,32 @@
   box-shadow: rgb(9 30 66 / 25%) 0px 4px 8px -2px, rgb(9 30 66 / 8%) 0px 0px 0px;
   background-color: $color-light;
   border-radius: 13px;
-  visibility: hidden;
+  // visibility: hidden;
   transition: all 0.3s;
   &__option {
+    width: 100%;
+    display: block;
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+    &:hover {
+      color: $color-primary;
+      cursor: pointer;
+    }
   }
-  // &--active {
-  //   visibility: visible;
-  //   animation: displayMenu 0.1s;
-  // }
-  // &--inactive {
-  //   visibility: hidden;
-  //   animation: closeMenu 0.1s;
-  // }
+}
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu {
+  padding: 10px;
+  text-align: center;
+  box-shadow: rgb(9 30 66 / 25%) 0px 4px 8px -2px, rgb(9 30 66 / 8%) 0px 0px 0px;
+  background-color: $color-light;
+  border-radius: 13px;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }

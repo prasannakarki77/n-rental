@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import car_drive from "../images/car-drive.png";
+import user_icon from "../images/user_icon.png";
 import "../styles/profile.scss";
 import { FaUserAlt, FaKey } from "react-icons/fa";
 import { MdEmail, MdAddPhotoAlternate } from "react-icons/md";
@@ -62,7 +62,7 @@ const Profile = () => {
             src={
               profile.profile_img
                 ? `http://localhost:90/${profile.profile_img}`
-                : car_drive
+                : user_icon
             }
             alt="profile_image"
           />
