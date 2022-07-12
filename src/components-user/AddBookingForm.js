@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import axios from "axios";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 function AddBookingForm(props) {
   const [noOfDays, setNoOfDays] = useState("");
   const [bookingDate, setBookingDate] = useState("");

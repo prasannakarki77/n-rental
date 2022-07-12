@@ -2,16 +2,24 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { FaPenAlt } from "react-icons/fa";
 import { FcCancel } from "react-icons/fc";
+import { AiFillCar } from "react-icons/ai";
 import "../styles/booking.scss";
 import axios from "axios";
 import CancelBooking from "./CancelBooking";
+import AddReview from "./AddReview";
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);
   const [deletePopup, setDeletePopUp] = useState(false);
+  const [reviewPopUp, setReviewPopUp] = useState(false);
   const [booking, setBooking] = useState([]);
+  const [vehicleId, setVehicleId] = useState("");
   const deleteHandler = (booking) => {
     setBooking(booking);
     setDeletePopUp(true);
+  };
+  const reviewHandler = (vehicle_id) => {
+    setVehicleId(vehicle_id);
+    setReviewPopUp(true);
   };
   const config = {
     headers: {
@@ -37,8 +45,15 @@ const Bookings = () => {
           onHide={() => setDeletePopUp(false)}
           booking={booking}
         />
+        <AddReview
+          show={reviewPopUp}
+          onHide={() => setReviewPopUp(false)}
+          vehicle_id={vehicleId}
+        />
         <div className="bookings__title">
-          <span className="bookings__title--text">My Bookings</span>
+          <span className="bookings__title--text">
+            <AiFillCar /> My Bookings
+          </span>
         </div>
         <div className="booking-container">
           {bookings.map((booking) => {
@@ -102,7 +117,10 @@ const Bookings = () => {
                     <div className="booking__detail--btns">
                       <div>
                         {" "}
-                        <button className="booking__add-review">
+                        <button
+                          className="booking__add-review"
+                          onClick={() => reviewHandler(booking.vehicle_id._id)}
+                        >
                           Add Review <FaPenAlt />
                         </button>
                       </div>
