@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import DeleteBooking from "./DeleteBooking";
 // import AddArticle from "./AddArticle";
 // import UpdateArticle from "./UpdateArticle";
 // import DeleteArticle from "./DeleteArticle";
@@ -48,12 +49,12 @@ const BookingDashboard = () => {
       <div className="dashboard-content">
         <div className="container ">
           <div className="d-flex ">
-            {/* <DeleteArticle
-              show={deleteArticle}
-              onHide={() => setDeleteArticle(false)}
-              article={article}
+            <DeleteBooking
+              show={deleteBooking}
+              onHide={() => setDeleteBooking(false)}
+              booking={booking}
             />
-            <UpdateArticleImage
+            {/* <UpdateArticleImage
               show={updateArticleImage}
               onHide={() => setUpdateArticleImage(false)}
               article={article}
