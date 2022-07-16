@@ -50,7 +50,7 @@ const AdminNav = () => {
           <ImBlog />
           Article
         </NavLink>
-        <NavLink to="/d" className="sidenav__item">
+        <NavLink to="/booking_dashboard" className="sidenav__item">
           <BsFillBookmarksFill />
           Bookings
         </NavLink>

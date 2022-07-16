@@ -17,6 +17,7 @@ import ArticleDashboard from "../components-admin/article/ArticleDashboard";
 import Profile from "../components-admin/Profile";
 import AddBookingForm from "./AddBookingForm";
 import Bookings from "./Bookings";
+import BookingDashboard from "../components-admin/booking/BookingDashboard";
 const Body = () => {
   return (
     <>
@@ -68,6 +69,7 @@ const Body = () => {
             <Route path="/category_dashboard" element={<CategoryDashboard />} />
             <Route path="/vehicle_dashboard" element={<VehicleDashboard />} />
             <Route path="/article_dashboard" element={<ArticleDashboard />} />
+            <Route path="/booking_dashboard" element={<BookingDashboard />} />
           </Routes>
         </ScrollToTop>
       </div>
