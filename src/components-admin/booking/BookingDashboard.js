@@ -7,12 +7,13 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import DeleteBooking from "./DeleteBooking";
+import UpdateBookingStatus from "./UpdateBookingStatus";
 // import AddArticle from "./AddArticle";
 // import UpdateArticle from "./UpdateArticle";
 // import DeleteArticle from "./DeleteArticle";
 
 const BookingDashboard = () => {
-  const [updateBooking, setUpdateBooking] = useState(false);
+  const [updateBookingStatus, setUpdateBookingStatus] = useState(false);
   const [deleteBooking, setDeleteBooking] = useState(false);
   const [bookingList, setBookingList] = useState([]);
   const [booking, setBooking] = useState([]);
@@ -34,9 +35,9 @@ const BookingDashboard = () => {
       });
   }, []);
 
-  const updateBookingHandler = (booking) => {
+  const updateBookingStatusHandler = (booking) => {
     setBooking(booking);
-    setUpdateBooking(true);
+    setUpdateBookingStatus(true);
   };
   const deleteBookingHandler = (booking) => {
     setBooking(booking);
@@ -54,11 +55,11 @@ const BookingDashboard = () => {
               onHide={() => setDeleteBooking(false)}
               booking={booking}
             />
-            {/* <UpdateArticleImage
-              show={updateArticleImage}
-              onHide={() => setUpdateArticleImage(false)}
-              article={article}
-            /> */}
+            <UpdateBookingStatus
+              show={updateBookingStatus}
+              onHide={() => setUpdateBookingStatus(false)}
+              booking={booking}
+            />
             <button type="button" className=" ms-2 btn btn-danger">
               <FaTrashAlt /> Delete All
             </button>
@@ -108,7 +109,7 @@ const BookingDashboard = () => {
                       <button
                         type="button"
                         className="btn btn-primary btn-sm m-1"
-                        onClick={() => updateBookingHandler(booking)}
+                        onClick={() => updateBookingStatusHandler(booking)}
                       >
                         <BsFillPenFill />
                       </button>
