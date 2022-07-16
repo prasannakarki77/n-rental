@@ -1,16 +1,19 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { FaPenAlt } from "react-icons/fa";
-import { FcCancel } from "react-icons/fc";
+import { TiCancel } from "react-icons/ti";
 import { AiFillCar } from "react-icons/ai";
+import { MdOutlineEditNote } from "react-icons/md";
 import "../styles/booking.scss";
 import axios from "axios";
 import CancelBooking from "./CancelBooking";
 import AddReview from "./AddReview";
+import UpdateBookingForm from "./UpdateBookingForm";
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);
   const [deletePopup, setDeletePopUp] = useState(false);
   const [reviewPopUp, setReviewPopUp] = useState(false);
+  const [updateBooking, setUpdateBooking] = useState(false);
   const [booking, setBooking] = useState([]);
   const [vehicleId, setVehicleId] = useState("");
   const deleteHandler = (booking) => {
@@ -20,6 +23,10 @@ const Bookings = () => {
   const reviewHandler = (vehicle_id) => {
     setVehicleId(vehicle_id);
     setReviewPopUp(true);
+  };
+  const updateBookingHandler = (booking) => {
+    setBooking(booking);
+    setUpdateBooking(true);
   };
   const config = {
     headers: {
@@ -40,6 +47,11 @@ const Bookings = () => {
   return (
     <>
       <div className="bookings">
+        <UpdateBookingForm
+          show={updateBooking}
+          onHide={() => setUpdateBooking(false)}
+          booking={booking}
+        />
         <CancelBooking
           show={deletePopup}
           onHide={() => setDeletePopUp(false)}
@@ -61,6 +73,12 @@ const Bookings = () => {
               if (booking != null) {
                 return (
                   <div className="booking">
+                    <button
+                      className="booking__add-review"
+                      onClick={() => reviewHandler(booking.vehicle_id._id)}
+                    >
+                      Add Review <FaPenAlt />
+                    </button>
                     <div className="booking__img">
                       <img
                         src={
@@ -93,7 +111,7 @@ const Bookings = () => {
                         <span className="booking__detail--title">
                           No of Days:{" "}
                         </span>
-                        {booking.no_of_days}2
+                        {booking.no_of_days}
                       </div>
                       <div className="booking__detail--date">
                         <span className="booking__detail--title">
@@ -123,12 +141,10 @@ const Bookings = () => {
                         <div>
                           {" "}
                           <button
-                            className="booking__add-review"
-                            onClick={() =>
-                              reviewHandler(booking.vehicle_id._id)
-                            }
+                            className="booking__update-btn"
+                            onClick={() => updateBookingHandler(booking)}
                           >
-                            Add Review <FaPenAlt />
+                            Update Booking <MdOutlineEditNote />
                           </button>
                         </div>
                         <div>
@@ -136,7 +152,7 @@ const Bookings = () => {
                             className="booking__cancel-btn"
                             onClick={() => deleteHandler(booking)}
                           >
-                            Cancel Booking <FcCancel />
+                            Cancel Booking <TiCancel />
                           </button>
                         </div>
                       </div>
