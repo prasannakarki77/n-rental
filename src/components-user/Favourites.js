@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { FaPenAlt } from "react-icons/fa";
 import { TiCancel } from "react-icons/ti";
 import { AiFillCar, AiFillCaretRight } from "react-icons/ai";
+import { ToastContainer, toast } from "react-toastify";
 import {
   MdOutlineEditNote,
   MdBookmarkAdded,
@@ -13,8 +14,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 const Favourites = () => {
   const [favourites, setFavourites] = useState([]);
-  const [vehicleId, setVehicleId] = useState("");
-
+  const [favouriteId, setFavouriteId] = useState("");
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -32,6 +32,21 @@ const Favourites = () => {
         console.log(e);
       });
   }, []);
+  const deleteFavourite = (e, favouriteId) => {
+    e.preventDefault();
+    axios
+      .delete("http://localhost:90/favourite/delete/" + favouriteId, config)
+      .then((res) => {
+        if (res.data.success === true) {
+          window.location.reload("/user/myfavourites");
+          toast.success("Removed From Favourites");
+        } else {
+          console.log("Please Try Again! Something Went Wrong!!!");
+        }
+        console.log(res.data);
+      });
+  };
+
   return (
     <>
       <div className="favourites">
@@ -45,8 +60,13 @@ const Favourites = () => {
             favourites.map((favourite) => {
               if (favourite != null) {
                 return (
-                  <div className="favourite">
-                    <MdBookmarkRemove className="favourite__remove-btn" />
+                  <div className="favourite" key={favourite._id}>
+                    <MdBookmarkRemove
+                      className="favourite__remove-btn"
+                      onClick={(e) => {
+                        deleteFavourite(e, favourite._id);
+                      }}
+                    />
 
                     <div className="favourite__img">
                       <img
@@ -75,10 +95,7 @@ const Favourites = () => {
                       </div>
                       <div className="d-flex justify-content-end">
                         <Link to={"/vehicle/" + favourite.vehicle_id._id}>
-                          <button
-                            className="favourite__detail--view-details css-button-sliding-to-left--red"
-                            // onClick={() => updateBookingHandler(booking)}
-                          >
+                          <button className="favourite__detail--view-details css-button-sliding-to-left--red">
                             View Details <AiFillCaretRight />
                           </button>
                         </Link>
