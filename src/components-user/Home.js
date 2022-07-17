@@ -65,7 +65,6 @@ const Home = () => {
                       src={`http://localhost:90/${vehicle.vehicle_image}`}
                       alt="vehicle"
                     />
-                    <BsFillBookmarkFill className="bookmark" />
                   </div>
                   <div className="vehicle-card__name">
                     {vehicle.vehicle_name}

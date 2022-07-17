@@ -35,22 +35,4 @@ a:hover {
   color: inherit;
 }
 
-.bookmark {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  color: $color-grey;
-  z-index: 10;
-  cursor: pointer;
-  transition: all 0.3s;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &--select {
-    color: $color-primary;
-  }
-  &--unselect {
-    color: $color-grey;
-  }
-}
+

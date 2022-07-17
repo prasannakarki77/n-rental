@@ -211,7 +211,10 @@ const Header = () => {
                       <Link to="/profile" className="user-menu__option">
                         Profile
                       </Link>
-                      <Link to="/profile" className="user-menu__option">
+                      <Link
+                        to="/user/myfavourites"
+                        className="user-menu__option"
+                      >
                         Favourites
                       </Link>
                       <Link to="/user/mybookings" className="user-menu__option">

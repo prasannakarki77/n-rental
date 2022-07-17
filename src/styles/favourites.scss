@@ -1,0 +1,144 @@
+@import "./variables.scss";
+
+.favourites {
+  padding: 60px;
+  @include breakpoint(lg) {
+    padding: 20px;
+  }
+  a {
+    text-decoration: none;
+  }
+  &__title-container {
+    text-align: center;
+  }
+  &__title {
+    margin-bottom: 60px;
+    font-size: 24px;
+    font-weight: 700;
+
+    display: flex;
+    justify-content: center;
+    &--text {
+      border-bottom: 2px solid $color-primary;
+      svg {
+        color: $color-primary;
+        margin-left: 5px;
+        font-size: 30px;
+      }
+    }
+  }
+}
+.favourite-container {
+  max-width: 1000px;
+  margin: 50px auto;
+}
+
+.favourite {
+  box-shadow: 5px 9px 23px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 19px;
+  display: flex;
+  overflow: hidden;
+  margin-bottom: 60px;
+  position: relative;
+  @include breakpoint(md) {
+    flex-direction: column;
+    align-items: center;
+  }
+  &__remove-btn {
+    position: absolute;
+    padding: 4px 6px;
+    background-color: $color-primary;
+    border-radius: 50%;
+    top: 10px;
+    right: 10px;
+    font-size: 35px;
+    color: $color-grey;
+    z-index: 10;
+    color: $color-light;
+
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+      transform: scale(1.05);
+    }
+  }
+
+  &__img {
+    img {
+      height: 100%;
+      width: 510px;
+      object-fit: contain;
+      @include breakpoint(md) {
+        width: 100%;
+      }
+    }
+  }
+  &__detail {
+    padding: 30px 25px;
+    width: 100%;
+    font-weight: 050;
+    & > :not(:last-child) {
+      margin-bottom: 15px;
+    }
+    &--title {
+      font-size: 16px;
+      font-weight: 600;
+      color: $color-dark;
+    }
+    &--view-details {
+      padding: 5px 10px;
+
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+    &--vehicle-name {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    &--vehicle-desc {
+      color: $color-grey;
+    }
+  }
+}
+
+.css-iljtu2-MuiRating-root {
+  font-size: 0.8rem !important;
+}
+.css-button-sliding-to-left--red {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  z-index: 0;
+  background: #fff;
+  overflow: hidden;
+  border: 2px solid $color-primary;
+  color: $color-primary;
+}
+.css-button-sliding-to-left--red:hover {
+  color: #fff;
+}
+.css-button-sliding-to-left--red:hover:after {
+  width: 100%;
+}
+.css-button-sliding-to-left--red:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s ease;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: $color-primary;
+}

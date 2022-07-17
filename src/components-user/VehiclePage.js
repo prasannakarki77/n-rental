@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import "../styles/vehicle_page.scss";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import { BsFillBookmarkFill } from "react-icons/bs";
+import { toast } from "react-toastify";
 import AddBookingForm from "./AddBookingForm";
 import { AiFillStar } from "react-icons/ai";
-import { MdRateReview } from "react-icons/md";
+import { MdRateReview, MdBookmarkAdd } from "react-icons/md";
 import user_icon from "../images/user_icon.png";
 import Rating from "@mui/material/Rating";
 const VehiclePage = () => {
@@ -35,9 +35,38 @@ const VehiclePage = () => {
         console.log(e);
       });
   }, []);
-  const bookmarkHandler = (e) => {
+  const addFavourite = (e) => {
     e.preventDefault();
-    setBookmarkStatus((p) => !p);
+    if (localStorage.getItem("userToken") == null) {
+      window.location.replace("/login");
+    } else {
+      const config = {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("userToken"),
+        },
+      };
+      const data = {};
+      axios
+        .post(
+          "http://localhost:90/favourite/insert/" + vehicle._id,
+          data,
+          config
+        )
+        .then((res) => {
+          console.log(res);
+          if (res.data.success === true) {
+            console.log("Favourite Added Successfully");
+            toast.success("Added to Favourites");
+          } else {
+            console.log("Please Try Again! Something Went Wrong!!!");
+            toast.error("Failed");
+          }
+          console.log(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
   };
   return (
     <>
@@ -53,12 +82,8 @@ const VehiclePage = () => {
             src={"http://localhost:90/" + vehicle.vehicle_image}
             alt="bike"
           />
-          <BsFillBookmarkFill
-            className={`bookmark ${
-              bookmarkStatus ? "bookmark--select" : "bookmark-unselect"
-            }`}
-            onClick={bookmarkHandler}
-          />
+          <div></div>
+          <MdBookmarkAdd className="bookmark" onClick={addFavourite} />
         </div>
         <div className="vehicle__details">
           <div className="vehicle__name">{vehicle.vehicle_name}</div>

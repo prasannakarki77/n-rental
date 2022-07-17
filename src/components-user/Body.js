@@ -18,6 +18,7 @@ import Profile from "../components-admin/Profile";
 import AddBookingForm from "./AddBookingForm";
 import Bookings from "./Bookings";
 import BookingDashboard from "../components-admin/booking/BookingDashboard";
+import Favourites from "./Favourites";
 const Body = () => {
   return (
     <>
@@ -27,22 +28,8 @@ const Body = () => {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route
-              path="/vehicle"
-              element={
-                <PrivateRoute>
-                  <Vehicle />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/vehicle/:id"
-              element={
-                <PrivateRoute>
-                  <VehiclePage />
-                </PrivateRoute>
-              }
-            />
+            <Route path="/vehicle" element={<Vehicle />} />
+            <Route path="/vehicle/:id" element={<VehiclePage />} />
             <Route
               path="/vehicle/booking/:id"
               element={
@@ -56,6 +43,14 @@ const Body = () => {
               element={
                 <PrivateRoute>
                   <Bookings />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/user/myfavourites"
+              element={
+                <PrivateRoute>
+                  <Favourites />
                 </PrivateRoute>
               }
             />

@@ -102,3 +102,24 @@
     padding: 20px;
   }
 }
+
+.bookmark {
+  position: absolute;
+  padding: 4px 6px;
+  background-color: $color-primary;
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  font-size: 35px;
+  color: $color-grey;
+  z-index: 10;
+  color: $color-light;
+
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    transform: scale(1.05);
+  }
+}
