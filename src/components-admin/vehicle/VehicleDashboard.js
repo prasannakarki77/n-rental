@@ -2,6 +2,7 @@ import { BsFillPenFill, BsUpda } from "react-icons/bs";
 import { FaTrashAlt } from "react-icons/fa";
 import { BsPlusLg, BsImageAlt } from "react-icons/bs";
 import { MdAddPhotoAlternate } from "react-icons/md";
+import { AiFillCar } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
@@ -67,7 +68,12 @@ const VehicleDashboard = () => {
   return (
     <>
       <div className="dashboard-content">
-        <div className="container ">
+        <div className="dashboard__title mb-4">
+          <h1 className="dashboard__title--text ">
+            <AiFillCar /> Vehicles
+          </h1>
+        </div>
+        <div className="container">
           <div className="d-flex ">
             <Button variant="primary" onClick={() => setAddFormShow(true)}>
               <BsPlusLg /> Add Vehicle

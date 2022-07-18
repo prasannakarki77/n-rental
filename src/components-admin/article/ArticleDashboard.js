@@ -1,6 +1,7 @@
 import { BsFillPenFill, BsPlusLg } from "react-icons/bs";
 import { FaTrashAlt } from "react-icons/fa";
 import { MdAddPhotoAlternate } from "react-icons/md";
+import { ImBlog } from "react-icons/im";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -53,6 +54,11 @@ const ArticleDashboard = () => {
   return (
     <>
       <div className="dashboard-content">
+        <div className="dashboard__title">
+          <h1 className="dashboard__title--text">
+            <ImBlog /> Articles
+          </h1>
+        </div>
         <div className="container ">
           <div className="d-flex ">
             <Button variant="primary" onClick={() => setAddArticle(true)}>

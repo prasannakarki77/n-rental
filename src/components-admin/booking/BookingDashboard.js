@@ -1,4 +1,4 @@
-import { BsFillPenFill, BsPlusLg } from "react-icons/bs";
+import { BsFillPenFill, BsPlusLg, BsFillBookmarksFill } from "react-icons/bs";
 import { FaTrashAlt } from "react-icons/fa";
 import { MdAddPhotoAlternate } from "react-icons/md";
 import Button from "react-bootstrap/Button";
@@ -48,6 +48,11 @@ const BookingDashboard = () => {
   return (
     <>
       <div className="dashboard-content">
+        <div className="dashboard__title mb-4">
+          <h1 className="dashboard__title--text ">
+            <BsFillBookmarksFill /> Bookings
+          </h1>
+        </div>
         <div className="container ">
           <div className="d-flex ">
             <DeleteBooking
