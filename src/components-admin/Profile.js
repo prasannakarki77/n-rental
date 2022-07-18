@@ -7,10 +7,12 @@ import { MdEmail, MdAddPhotoAlternate } from "react-icons/md";
 import { BsTelephoneFill } from "react-icons/bs";
 import UpdateProfile from "../components-user/UpdateProfile";
 import UpdateProfileImage from "../components-user/UpdateProfileImage";
+import UpdatePasswordForm from "../components-user/UpdatePasswordForm";
 
 const Profile = () => {
   const [updateForm, setUpdateFormShow] = useState(false);
   const [imageUpdate, setImageUpdate] = useState(false);
+  const [passwordUpdate, setPasswordUpdate] = useState(false);
   const [profile, setProfile] = useState([]);
   const config = {
     headers: {
@@ -40,6 +42,9 @@ const Profile = () => {
   const imageUpdateHandler = () => {
     setImageUpdate(true);
   };
+  const passwordUpdateHandler = () => {
+    setPasswordUpdate(true);
+  };
 
   return (
     <>
@@ -54,6 +59,10 @@ const Profile = () => {
           show={imageUpdate}
           onHide={() => setImageUpdate(false)}
           profile={profile}
+        />
+        <UpdatePasswordForm
+          show={passwordUpdate}
+          onHide={() => setPasswordUpdate(false)}
         />
         <div className="profile__image">
           <MdAddPhotoAlternate onClick={imageUpdateHandler} />
@@ -140,9 +149,12 @@ const Profile = () => {
             </div>
             <div className="col-md-6">
               {" "}
-              <button onClick={logout} className="btn btn-danger profile__btn">
+              <button
+                onClick={passwordUpdateHandler}
+                className="btn btn-danger profile__btn"
+              >
                 {" "}
-                Logout
+                Change Password
               </button>
             </div>
           </div>
