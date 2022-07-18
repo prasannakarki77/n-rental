@@ -77,7 +77,7 @@ const Profile = () => {
           />
         </div>
         <div className="profile__details container">
-          <p>My Profile</p>
+          <p>Profile</p>
 
           <div className="profile__detail">
             <p className="profile__detail--label">Username</p>

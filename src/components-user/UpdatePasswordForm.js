@@ -66,7 +66,7 @@ function UpdatePasswordForm(props) {
             />
           </Form.Group>
 
-          <Form.Group controlId="formGridPassword">
+          <Form.Group className="mb-3" controlId="formGridPassword">
             <Form.Label>New Password</Form.Label>
             <Form.Control
               type="password"

@@ -79,14 +79,17 @@ const Header = () => {
               <FiMenu />
             </div>
             <div className="user-dropdown">
-              <Link to="/admin_dashboard" className="user">
+              <Link to="/admin/settings" className="user">
                 <img
-                  src="https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png"
+                  src={
+                    userDetails.profile_img
+                      ? `http://localhost:90/${userDetails.profile_img}`
+                      : user_icon
+                  }
                   alt="user"
                   className="user__image"
                 />
                 <span className="user__username">{userDetails.username}</span>
-                <MdArrowDropDown />
               </Link>
             </div>
 
@@ -114,23 +117,18 @@ const Header = () => {
               </NavLink>
               <NavLink to="/category_dashboard" className="sidenav__item">
                 <BiCategoryAlt />
-                Category
+                Categories
               </NavLink>
               <NavLink to="/article_dashboard" className="sidenav__item">
                 <ImBlog />
-                Article
+                Articles
               </NavLink>
               <NavLink to="/booking_dashboard" className="sidenav__item">
                 <BsFillBookmarksFill />
                 Bookings
               </NavLink>
-              <NavLink to="/e" className="sidenav__item">
-                <BsFillBookmarkCheckFill />
-                Favourites
-              </NavLink>
-
               <div className="sidenav__profile">
-                <NavLink to="/f" className="sidenav__item">
+                <NavLink to="/admin/settings" className="sidenav__item">
                   <MdSettingsSuggest />
                   Settings
                 </NavLink>

@@ -19,6 +19,7 @@ import AddBookingForm from "./AddBookingForm";
 import Bookings from "./Bookings";
 import BookingDashboard from "../components-admin/booking/BookingDashboard";
 import Favourites from "./Favourites";
+import AdminDashboard from "../components-admin/AdminDashboard";
 const Body = () => {
   return (
     <>
@@ -54,12 +55,20 @@ const Body = () => {
                 </PrivateRoute>
               }
             />
+            <Route
+              path="/admin_dashboard"
+              element={
+                <PrivateRoute>
+                  <AdminDashboard />
+                </PrivateRoute>
+              }
+            />
 
             <Route path="/blog" element={<Blog />} />
             <Route path="/about" element={<About />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/article/single/:id" element={<ArticlePage />} />
-            <Route path="/admin_dashboard" element={<Profile />} />
+            <Route path="/admin/settings" element={<Profile />} />
             <Route path="/private" element={<PrivateRoute />} />
             <Route path="/category_dashboard" element={<CategoryDashboard />} />
             <Route path="/vehicle_dashboard" element={<VehicleDashboard />} />
