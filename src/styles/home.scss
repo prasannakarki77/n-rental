@@ -10,7 +10,9 @@
   text-align: center;
   position: relative;
   color: $color-light;
-
+  a {
+    color: inherit;
+  }
   &__desc {
     position: absolute;
     top: 60%;
@@ -459,4 +461,9 @@
   &__details {
     font-size: 14px;
   }
+}
+
+.about-page {
+  box-shadow: none;
+  margin-bottom: 0;
 }

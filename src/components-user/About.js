@@ -2,7 +2,7 @@ import React from "react";
 import car_drive from "../images/car-drive.png";
 const About = () => {
   return (
-    <section className="about" id="about">
+    <section className="about about-page" id="about">
       <div className="about__img">
         <img src={car_drive} alt="" />
       </div>

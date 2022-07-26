@@ -23,13 +23,13 @@ const Footer = () => {
             <a href="/" className="footer-links__item">
               Home
             </a>
-            <a href="/" className="footer-links__item">
+            <a href="/about" className="footer-links__item">
               About
             </a>
-            <a href="/" className="footer-links__item">
+            <a href="/vehicle" className="footer-links__item">
               Vehicles
             </a>
-            <a href="/" className="footer-links__item">
+            <a href="/blog" className="footer-links__item">
               Blogs
             </a>
           </div>

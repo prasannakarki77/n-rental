@@ -28,6 +28,9 @@ const BookingDashboard = () => {
       .get("http://localhost:90/booking/get", config)
       .then((res) => {
         setBookingList(res.data.data);
+        console.log(res.data.data);
+        setBookingList(res.data.data);
+        console.log(bookingList);
         console.log(bookingList);
       })
       .catch((e) => {

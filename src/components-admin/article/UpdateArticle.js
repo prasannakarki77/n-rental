@@ -92,6 +92,7 @@ function UpdateArticle(props) {
               onChange={(e) => {
                 setDate(e.target.value);
               }}
+              type="date"
               defaultValue={props.article.date}
             />
           </Form.Group>

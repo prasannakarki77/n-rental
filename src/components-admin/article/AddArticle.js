@@ -79,6 +79,7 @@ function AddArticle(props) {
             <Form.Label>Date</Form.Label>
             <Form.Control
               placeholder="Enter publish date"
+              type="date"
               onChange={(e) => {
                 setDate(e.target.value);
               }}

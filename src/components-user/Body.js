@@ -66,14 +66,57 @@ const Body = () => {
 
             <Route path="/blog" element={<Blog />} />
             <Route path="/about" element={<About />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute>
+                  {" "}
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
             <Route path="/article/single/:id" element={<ArticlePage />} />
-            <Route path="/admin/settings" element={<Profile />} />
+            <Route
+              path="/admin/settings"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
             <Route path="/private" element={<PrivateRoute />} />
-            <Route path="/category_dashboard" element={<CategoryDashboard />} />
-            <Route path="/vehicle_dashboard" element={<VehicleDashboard />} />
-            <Route path="/article_dashboard" element={<ArticleDashboard />} />
-            <Route path="/booking_dashboard" element={<BookingDashboard />} />
+            <Route
+              path="/category_dashboard"
+              element={
+                <PrivateRoute>
+                  <CategoryDashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/vehicle_dashboard"
+              element={
+                <PrivateRoute>
+                  <VehicleDashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/article_dashboard"
+              element={
+                <PrivateRoute>
+                  <ArticleDashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/booking_dashboard"
+              element={
+                <PrivateRoute>
+                  <BookingDashboard />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </ScrollToTop>
       </div>

@@ -46,9 +46,11 @@ const Home = () => {
             and <span className="hero__text--highlight">Drive </span>
             anywhere, anytime
           </div>
-          <button className="hero__btn">
-            Search Vehicles <BiSearchAlt />
-          </button>
+          <Link to="/vehicle">
+            <button className="hero__btn">
+              Search Vehicles <BiSearchAlt />
+            </button>
+          </Link>
         </div>
       </section>
       <section className="featured">
