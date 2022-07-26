@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../styles/vehicle_page.scss";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import AddBookingForm from "./AddBookingForm";
-import { AiFillStar } from "react-icons/ai";
 import { MdRateReview, MdBookmarkAdd } from "react-icons/md";
 import user_icon from "../images/user_icon.png";
 import Rating from "@mui/material/Rating";
 const VehiclePage = () => {
   const [vehicle, setVehicle] = useState([]);
-  const [bookmarkStatus, setBookmarkStatus] = useState(false);
   const [addForm, setAddFormShow] = useState(false);
   const [reviews, setReviews] = useState([]);
   const { id } = useParams();

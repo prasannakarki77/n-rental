@@ -1,13 +1,10 @@
-import { BsFillPenFill, BsUpda } from "react-icons/bs";
+import { BsFillPenFill } from "react-icons/bs";
 import { FaTrashAlt } from "react-icons/fa";
-import { BsPlusLg, BsImageAlt } from "react-icons/bs";
+import { BsPlusLg } from "react-icons/bs";
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { AiFillCar } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
-import FormModal from "./AddVehicleForm";
-import UpdateForm from "./UpdateVehicleForm";
 import { useEffect } from "react";
 import axios from "axios";
 import AddVehicleForm from "./AddVehicleForm";

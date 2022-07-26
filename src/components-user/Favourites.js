@@ -1,20 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { FaPenAlt } from "react-icons/fa";
-import { TiCancel } from "react-icons/ti";
-import { AiFillCar, AiFillCaretRight } from "react-icons/ai";
-import { ToastContainer, toast } from "react-toastify";
-import {
-  MdOutlineEditNote,
-  MdBookmarkAdded,
-  MdBookmarkRemove,
-} from "react-icons/md";
+import { AiFillCaretRight } from "react-icons/ai";
+import { toast } from "react-toastify";
+import { MdBookmarkAdded, MdBookmarkRemove } from "react-icons/md";
 import "../styles/favourites.scss";
 import axios from "axios";
 import { Link } from "react-router-dom";
 const Favourites = () => {
   const [favourites, setFavourites] = useState([]);
-  const [favouriteId, setFavouriteId] = useState("");
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),

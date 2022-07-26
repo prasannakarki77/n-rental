@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import user_icon from "../images/user_icon.png";
 import "../styles/profile.scss";
-import { FaUserAlt, FaKey } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
 import { MdEmail, MdAddPhotoAlternate } from "react-icons/md";
 import { BsTelephoneFill } from "react-icons/bs";
 import UpdateProfile from "../components-user/UpdateProfile";
@@ -30,11 +30,6 @@ const Profile = () => {
         console.log(e);
       });
   }, []);
-
-  const logout = () => {
-    localStorage.clear();
-    window.location.replace("/login");
-  };
 
   const updateHandler = () => {
     setUpdateFormShow(true);

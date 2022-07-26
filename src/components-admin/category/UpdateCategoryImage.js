@@ -1,10 +1,8 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 function UpdateCategoryImage(props) {
   const [category_image, setCategoryImage] = useState("");

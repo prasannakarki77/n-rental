@@ -7,7 +7,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import AddArticle from "./AddCategory";
 import DeleteCategory from "./DeleteCategory";
 import UpdateCategoryImage from "./UpdateCategoryImage";
 import AddCategory from "./AddCategory";

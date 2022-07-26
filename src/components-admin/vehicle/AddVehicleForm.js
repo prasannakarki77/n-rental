@@ -19,15 +19,6 @@ function AddVehicleForm(props) {
 
   const insertVehicle = (e) => {
     e.preventDefault();
-    // if data is only text
-    // const data = {
-    //   vehicle_name: vehicleName,
-    //   vehicle_category: category,
-    //   vehicle_company: company,
-    //   vehicle_desc: description,
-    //   booking_cost: cost,
-    //   vehicle_sku: sku,
-    // };
     const data = new FormData();
     data.append("vehicle_name", vehicleName);
     data.append("vehicle_category", category);

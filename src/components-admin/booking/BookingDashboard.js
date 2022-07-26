@@ -1,16 +1,11 @@
-import { BsFillPenFill, BsPlusLg, BsFillBookmarksFill } from "react-icons/bs";
+import { BsFillPenFill, BsFillBookmarksFill } from "react-icons/bs";
 import { FaTrashAlt } from "react-icons/fa";
-import { MdAddPhotoAlternate } from "react-icons/md";
-import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import DeleteBooking from "./DeleteBooking";
 import UpdateBookingStatus from "./UpdateBookingStatus";
-// import AddArticle from "./AddArticle";
-// import UpdateArticle from "./UpdateArticle";
-// import DeleteArticle from "./DeleteArticle";
 
 const BookingDashboard = () => {
   const [updateBookingStatus, setUpdateBookingStatus] = useState(false);

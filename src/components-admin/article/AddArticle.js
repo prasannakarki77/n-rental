@@ -16,15 +16,6 @@ function AddArticle(props) {
   const insertArticle = (e) => {
     console.log(isFeatured);
     e.preventDefault();
-    // if data is only text
-    // const data = {
-    //   vehicle_name: vehicleName,
-    //   vehicle_category: category,
-    //   vehicle_company: company,
-    //   vehicle_desc: description,
-    //   booking_cost: cost,
-    //   vehicle_sku: sku,
-    // };
     const data = new FormData();
     data.append("title", title);
     data.append("date", date);

@@ -155,13 +155,6 @@ function UpdateProfile(props) {
             </Form.Group>
             <Form.Group as={Col} controlId="formGridPassword">
               <Form.Label>Gender</Form.Label>
-              {/* <Form.Control
-                placeholder="Enter gender"
-                onChange={(e) => {
-                  setGender(e.target.value);
-                }}
-                defaultValue={props.profile.gender}
-              /> */}
               <div key={`inline-radio`} className="mb-3">
                 <Form.Check
                   inline

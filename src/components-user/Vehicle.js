@@ -8,11 +8,10 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HiViewGrid } from "react-icons/hi";
 import axios from "axios";
-import { BsFillBookmarkFill } from "react-icons/bs";
+
 const Vehicle = () => {
   const [vehicleList, setVehicleList] = useState([]);
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState("");
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),

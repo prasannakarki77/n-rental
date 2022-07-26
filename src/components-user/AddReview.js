@@ -51,16 +51,6 @@ function AddReview(props) {
       </Modal.Header>
       <Modal.Body>
         <Form>
-          {/* <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Rating</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Rating"
-              onChange={(e) => {
-                setRating(e.target.value);
-              }}
-            />
-          </Form.Group> */}
           <div className="text-center">
             <Typography component="legend" className="mb-2">
               Rate it!!

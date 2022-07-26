@@ -1,5 +1,4 @@
 import { FaChevronCircleRight } from "react-icons/fa";
-import { BsFillCaretRightFill } from "react-icons/bs";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { useState } from "react";
 import { useEffect } from "react";

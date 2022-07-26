@@ -1,6 +1,6 @@
 import { BiSearchAlt } from "react-icons/bi";
 import { FaChevronCircleRight } from "react-icons/fa";
-import { BsFillCaretRightFill, BsFillBookmarkFill } from "react-icons/bs";
+import { BsFillCaretRightFill } from "react-icons/bs";
 
 import { FaMapMarkedAlt } from "react-icons/fa";
 import "./../styles/home.scss";

@@ -5,7 +5,6 @@ import Login from "./Login";
 import Home from "./Home";
 import Vehicle from "./Vehicle";
 import Blog from "./Blog";
-
 import ArticlePage from "./ArticlePage";
 import ScrollToTop from "../components/ScrollToTop";
 import About from "./About";

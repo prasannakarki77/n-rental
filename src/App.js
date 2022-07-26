@@ -2,11 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 import Body from "./components-user/Body";
 import Header from "./components-user/Header";
 import Footer from "./components-user/Footer";
-
-import AdminNav from "./components-admin/AdminNav";
-import AdminLayout from "./components-admin/AdminLayout";
-import AdminPage from "./components-admin/AdminPage";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
@@ -27,11 +23,6 @@ function App() {
         <Body />
         <Footer />
       </BrowserRouter>
-      {/* <BrowserRouter>
-        <AdminNav />
-        <AdminDashboard />
-      </BrowserRouter> */}
-      {/* <AdminPage /> */}
     </>
   );
 }

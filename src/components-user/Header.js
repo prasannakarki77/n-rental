@@ -13,11 +13,10 @@ import axios from "axios";
 import { BiCategoryAlt } from "react-icons/bi";
 import { ImBlog } from "react-icons/im";
 import { AiFillCar } from "react-icons/ai";
-import { BsFillBookmarksFill, BsFillBookmarkCheckFill } from "react-icons/bs";
+import { BsFillBookmarksFill } from "react-icons/bs";
 import { FaSignOutAlt } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
 import { MdOutlineClose } from "react-icons/md";
-import "../styles/admin_nav.scss";
 import { NavDropdown } from "react-bootstrap";
 
 const Header = () => {
@@ -158,12 +157,7 @@ const Header = () => {
           </div>
           <nav className={`nav ${openMenu ? "nav--slide" : ""}`}>
             <div className="nav__items">
-              <Link
-                to="/"
-                // onClick={clicked}
-                // className={`nav__item ${activeNav ? "nav--active" : ""}`}
-                className="nav__item"
-              >
+              <Link to="/" className="nav__item">
                 Home
               </Link>
               <Link to="/about" className="nav__item">
@@ -177,11 +171,6 @@ const Header = () => {
               </Link>
               {localStorage.getItem("userToken") ? (
                 <>
-                  {/* <Link className="" aria-current="page" to="/login">
-                  <button className="nav__btn" onClick={logout}>
-                    Log Out
-                  </button>
-                </Link> */}
                   <div className="user-dropdown">
                     <NavDropdown
                       title={

@@ -2,8 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
-import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import {toast } from "react-toastify";
 const CancelBooking = (props) => {
   const id = props.booking._id;
 

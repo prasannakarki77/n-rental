@@ -5,7 +5,6 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import UpdateVehicleImage from "./UpdatVehicleImage";
 
 function UpdateVehicleForm(props) {
   const [vehicleName, setVehicleName] = useState("");
@@ -46,17 +45,6 @@ function UpdateVehicleForm(props) {
 
   const updateVehicle = (e) => {
     e.preventDefault();
-    // console.log(vehicleName);
-    // console.log(vehicleName == "");
-    // if (vehicleName == "") {
-    //   console.log("vehicleName is empty");
-    //   console.log(props.vehicle.vehicle_name);
-    //   var name = props.vehicle.vehicle_name;
-    //   console.log(name);
-    //   setVehicleName(name);
-    //   console.log(vehicleName);
-    // }
-
     const data = {
       _id: props.vehicle._id,
       vehicle_name: vehicleName,
@@ -116,16 +104,6 @@ function UpdateVehicleForm(props) {
             />
           </Form.Group>
           <Row className="mb-3">
-            {/* <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Category</Form.Label>
-              <Form.Control
-                placeholder="Enter category"
-                onChange={(e) => {
-                  setCategory(e.target.value);
-                }}
-                defaultValue={props.vehicle.vehicle_category}
-              />
-            </Form.Group> */}
             <Form.Group as={Col} controlId="formGridCategory">
               <Form.Label>Category</Form.Label>
               <Form.Select

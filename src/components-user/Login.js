@@ -4,13 +4,12 @@ import "../styles/login.scss";
 import { Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import { FaKey } from "react-icons/fa";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
 
   const loginUser = (e) => {
     e.preventDefault();
@@ -46,7 +45,6 @@ const Login = () => {
   return (
     <>
       <div className="login-container">
-        <h3 className="text-center mt-5">{message}</h3>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
