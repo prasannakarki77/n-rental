@@ -19,7 +19,7 @@ const Home = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:90/article/get", config)
+      .get("https://n-rental.herokuapp.com/article/get", config)
       .then((res) => {
         setArticleList(res.data.data);
         console.log(articleList);
@@ -28,7 +28,7 @@ const Home = () => {
         console.log(e);
       });
     axios
-      .get("http://localhost:90/vehicle/get", config)
+      .get("https://n-rental.herokuapp.com/vehicle/get", config)
       .then((res) => {
         setVehicleList(res.data.data);
         console.log(vehicleList);
@@ -64,7 +64,7 @@ const Home = () => {
                 <div className="vehicle-card " key={vehicle._id}>
                   <div className="vehicle-card__img">
                     <img
-                      src={`http://localhost:90/${vehicle.vehicle_image}`}
+                      src={`https://n-rental.herokuapp.com/${vehicle.vehicle_image}`}
                       alt="vehicle"
                     />
                   </div>
@@ -152,7 +152,7 @@ const Home = () => {
                 <div className="blog">
                   <div className="blog__img">
                     <img
-                      src={`http://localhost:90/${article.image}`}
+                      src={`https://n-rental.herokuapp.com/${article.image}`}
                       alt="blog_image"
                     />
                   </div>
