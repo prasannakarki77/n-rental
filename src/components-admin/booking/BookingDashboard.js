@@ -24,9 +24,6 @@ const BookingDashboard = () => {
       .then((res) => {
         setBookingList(res.data.data);
         console.log(res.data.data);
-        setBookingList(res.data.data);
-        console.log(bookingList);
-        console.log(bookingList);
       })
       .catch((e) => {
         console.log(e);
